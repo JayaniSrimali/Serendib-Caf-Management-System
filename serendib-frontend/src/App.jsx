@@ -9,13 +9,24 @@ import Reserve from './pages/Reserve';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
 import { useCart } from './context/CartContext';
 import { useAuth } from './context/AuthContext';
 
+import { useLocation } from 'react-router-dom';
+
 const Layout = ({ children }) => {
   const { cartItems } = useCart();
   const { userInfo } = useAuth();
+  const location = useLocation();
+
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/reset-password';
+
+  if (isAuthPage) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="bg-theme-bg min-h-screen font-sans text-theme-dark flex flex-col overflow-x-hidden selection:bg-theme-accent selection:text-white">
@@ -90,82 +101,74 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      {/* Footer */}
-      <footer className="w-full bg-theme-dark text-[#D8C7B9] pt-20 pb-8 mt-auto px-6 md:px-12 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-[#D8C7B9]/20 pb-12">
+      {/* Footer (Minimalist Light Design) */}
+      <footer className="w-full bg-white pt-20 pb-12 mt-auto px-6 md:px-12 border-t border-theme-dark/5">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-          {/* Brand */}
-          <div>
-            <h2 className="text-2xl font-serif text-white mb-6 flex items-center gap-3">
-              <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 rounded-full border border-theme-accent/50" />
-              Café Serendib
-            </h2>
-            <p className="text-sm leading-relaxed mb-6 opacity-90 max-w-xs">
-              Where every cup tells a story and every bite feels like home. Enjoy handcrafted coffee, freshly baked delights, and the warmth of Sri Lankan hospitality.
-            </p>
-            <div className="flex gap-4">
-              <div className="w-9 h-9 rounded-full bg-[#4A3B31] flex items-center justify-center hover:bg-theme-accent hover:text-white cursor-pointer transition-all"><Facebook size={16} /></div>
-              <div className="w-9 h-9 rounded-full bg-[#4A3B31] flex items-center justify-center hover:bg-theme-accent hover:text-white cursor-pointer transition-all"><Instagram size={16} /></div>
-              <div className="w-9 h-9 rounded-full bg-[#4A3B31] flex items-center justify-center hover:bg-theme-accent hover:text-white cursor-pointer transition-all"><Twitter size={16} /></div>
+          {/* Column 1: Logo & Copyright */}
+          <div className="flex flex-col justify-between h-full lg:col-span-1 min-h-[150px]">
+            <Link to="/" className="flex items-center gap-2 mb-8">
+              <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[35px] h-[35px] object-cover rounded-full bg-theme-dark p-0.5" />
+              <span className="text-xl font-serif font-bold text-theme-dark tracking-wide">
+                Café Serendib
+              </span>
+            </Link>
+
+            <div className="mt-auto">
+              <p className="text-xs text-theme-dark/60 font-medium mb-1">© {new Date().getFullYear()} Café Serendib, Inc.</p>
+              <p className="text-xs text-theme-dark/60 font-medium">Terms of Service | Privacy Policy</p>
             </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 2: Quick Links */}
           <div>
-            <h4 className="text-white text-lg font-serif mb-6">Come Visit Us</h4>
-            <ul className="space-y-4 text-sm opacity-90">
-              <li className="flex items-start gap-4">
-                <MapPin size={18} className="text-theme-accent shrink-0 mt-0.5" />
-                <span>123 Galle Road,<br />Colombo 03, Sri Lanka</span>
-              </li>
-              <li className="flex items-center gap-4">
-                <Phone size={18} className="text-theme-accent shrink-0" />
-                <span>+94 11 234 5678</span>
-              </li>
+            <h4 className="text-sm font-bold text-theme-dark mb-6">Quick Links</h4>
+            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
+              <li><Link to="/" className="hover:text-theme-accent transition-colors">Home</Link></li>
+              <li><Link to="/menu" className="hover:text-theme-accent transition-colors">Our Menu</Link></li>
+              <li><Link to="/about" className="hover:text-theme-accent transition-colors">Our Story</Link></li>
+              <li><Link to="/reserve" className="hover:text-theme-accent transition-colors">Reservations</Link></li>
             </ul>
           </div>
 
-          {/* Opening Hours */}
+          {/* Column 3: Our Offerings */}
           <div>
-            <h4 className="text-white text-lg font-serif mb-6">Opening Hours</h4>
-            <ul className="space-y-4 text-sm opacity-90">
-              <li className="flex gap-4">
-                <Clock size={18} className="text-theme-accent shrink-0 mt-0.5" />
-                <div>
-                  <strong className="block text-white font-medium mb-1">Mon - Fri:</strong>
-                  07:00 AM - 10:00 PM
-                </div>
-              </li>
-              <li className="flex gap-4">
-                {/* Invisible spacer icon to align text */}
-                <Clock size={18} className="shrink-0 mt-0.5 opacity-0" />
-                <div>
-                  <strong className="block text-white font-medium mb-1">Sat - Sun:</strong>
-                  08:00 AM - 11:00 PM
-                </div>
-              </li>
+            <h4 className="text-sm font-bold text-theme-dark mb-6">Our Offerings</h4>
+            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Coffee Essentials</li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Fresh Pastries</li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Special Offers</li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Merchandise</li>
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 4: Support */}
           <div>
-            <h4 className="text-white text-lg font-serif mb-6">Quick Links</h4>
-            <ul className="space-y-3 text-sm opacity-90 flex flex-col items-start">
-              <li><Link to="/about" className="hover:text-theme-accent inline-block transition-colors">Our Story</Link></li>
-              <li><Link to="/menu" className="hover:text-theme-accent inline-block transition-colors">Featured Menu</Link></li>
-              <li><Link to="/reserve" className="hover:text-theme-accent inline-block transition-colors">Reserve a Table</Link></li>
-              <li><Link to="/orders" className="hover:text-theme-accent inline-block transition-colors">Order Online</Link></li>
+            <h4 className="text-sm font-bold text-theme-dark mb-6">Support</h4>
+            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
+              <li><Link to="/contact" className="hover:text-theme-accent transition-colors">Contact Us</Link></li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Help Center</li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Order Status</li>
+              <li className="hover:text-theme-accent cursor-pointer transition-colors">Locations</li>
             </ul>
           </div>
 
-        </div>
+          {/* Column 5: Get in touch & Socials */}
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <h4 className="text-sm font-bold text-theme-dark mb-6">Get in touch</h4>
+              <p className="text-xs font-semibold text-theme-dark/60 leading-relaxed max-w-xs">
+                Questions or feedback?<br />We'd love to hear from you.
+              </p>
+            </div>
 
-        <div className="max-w-[1400px] mx-auto text-center text-sm opacity-70 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>Copyright © {new Date().getFullYear()} Café Serendib. All Rights Reserved.</p>
-          <div className="flex gap-6">
-            <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
+            <div className="flex gap-4 mt-8 lg:mt-auto">
+              <Facebook size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
+              <Twitter size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
+              <Instagram size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
+            </div>
           </div>
+
         </div>
       </footer>
     </div>
@@ -189,6 +192,8 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<div className="text-center py-40 min-h-screen text-2xl font-serif">Page Not Found</div>} />
       </Routes>
