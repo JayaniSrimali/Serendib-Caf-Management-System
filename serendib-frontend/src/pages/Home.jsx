@@ -1,60 +1,104 @@
 import { motion } from 'framer-motion';
-import { ShoppingBag, Star, CheckCircle2, ChevronRight, Quote } from 'lucide-react';
+import { ShoppingBag, Star, CheckCircle2, ChevronRight, Quote, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
         <div className="w-full">
 
-            {/* 1. HERO SECTION */}
-            <section className="relative w-full h-[600px] md:h-[750px] flex items-center">
-                {/* Background Image full width */}
-                <div className="absolute inset-0 z-0">
+            {/* 1. HERO SECTION (Professional, Ultra-Premium layout) */}
+            <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+                {/* Background Image with slow zoom (Ken Burns) */}
+                <motion.div
+                    initial={{ scale: 1.05 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+                    className="absolute inset-0 z-0"
+                >
                     <img
-                        src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1920&q=80"
-                        alt="Coffee Pouring"
+                        src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1920&q=80"
+                        alt="Premium Coffee Background"
                         className="w-full h-full object-cover"
                     />
-                    {/* Dark gradient overlay for text readability */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-theme-dark/90 via-theme-dark/60 to-transparent"></div>
-                </div>
-
-                {/* Circular Promo Badge Overlap inspired by design */}
-                <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
-                    className="hidden lg:flex absolute bottom-0 left-[60%] transform -translate-y-1/2 -translate-x-1/2 w-48 h-48 bg-[#463121] rounded-full border-8 border-theme-bg shadow-2xl z-20 flex-col items-center justify-center text-center text-white"
-                >
-                    <div className="w-10 h-10 bg-theme-bg rounded-full p-1 mb-2">
-                        <img src="/assets/logo.png" alt="Icon" className="w-full h-full rounded-full" />
-                    </div>
-                    <span className="font-serif text-xl font-bold leading-tight">Today's<br />Special<br />Offer</span>
                 </motion.div>
 
-                <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full relative z-10 text-white mt-12">
+                {/* Elegant Dark Gradient Overlays */}
+                <div className="absolute inset-0 z-0 bg-black/60"></div>
+                <div className="absolute inset-0 z-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+                <div className="max-w-[1000px] mx-auto px-6 w-full relative z-10 flex flex-col items-center text-center mt-16">
+
+                    {/* Top subtle badge/icon */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="max-w-xl"
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="flex items-center gap-3 mb-6"
                     >
-                        <h1 className="text-5xl md:text-6xl lg:text-[70px] font-serif font-bold leading-[1.1] mb-6 drop-shadow-xl text-theme-bg">
-                            Experience the True Taste of Ceylon
-                        </h1>
-                        <p className="text-base md:text-lg mb-10 leading-relaxed text-[#F3E7DC] drop-shadow-md">
-                            Welcome to Café Serendib — where every cup tells a story and every bite feels like home. Enjoy handcrafted coffee, freshly baked delights, and the warmth of Sri Lankan hospitality.
-                        </p>
-                        <div className="flex flex-wrap gap-4">
-                            <Link to="/menu" className="bg-theme-accent text-white px-8 py-4 rounded-full font-bold hover:bg-theme-accentDark transition-colors shadow-lg">
-                                View Menu
-                            </Link>
-                            <Link to="/reserve" className="bg-transparent border-2 border-theme-accent text-theme-accent px-8 py-4 rounded-full font-bold hover:bg-theme-accent hover:text-white transition-colors shadow-lg shadow-black/20 backdrop-blur-sm">
-                                Reserve a Table
-                            </Link>
-                        </div>
+                        <div className="h-[1px] w-12 bg-theme-accent"></div>
+                        <span className="text-theme-accent uppercase tracking-[0.3em] text-sm font-bold">Est. 2024</span>
+                        <div className="h-[1px] w-12 bg-theme-accent"></div>
+                    </motion.div>
+
+                    {/* Main Title */}
+                    <div className="overflow-hidden mb-6">
+                        <motion.h1
+                            initial={{ y: 100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+                            className="text-5xl md:text-7xl lg:text-[90px] font-serif font-bold text-white leading-tight drop-shadow-2xl"
+                        >
+                            The True Taste <br className="hidden md:block" />
+                            <span className="italic font-light text-[#D8C7B9]">of Ceylon</span>
+                        </motion.h1>
+                    </div>
+
+                    {/* Subtitle / Description */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.8 }}
+                        className="text-[#D8C7B9]/90 text-lg md:text-xl font-light max-w-2xl mb-12 drop-shadow-lg leading-relaxed"
+                    >
+                        Immerse yourself in an unforgettable coffee experience. Crafted with passion, authentic spices, and the finest beans in Sri Lanka.
+                    </motion.p>
+
+                    {/* Action Buttons */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 1 }}
+                        className="flex flex-col sm:flex-row items-center gap-6"
+                    >
+                        <Link
+                            to="/menu"
+                            className="w-full sm:w-auto px-10 py-4 bg-theme-accent text-white font-bold tracking-widest uppercase text-sm rounded-none hover:bg-white hover:text-theme-dark transition-colors duration-300 shadow-xl"
+                        >
+                            Explore Menu
+                        </Link>
+                        <Link
+                            to="/reserve"
+                            className="w-full sm:w-auto px-10 py-4 bg-transparent border border-[#D8C7B9] text-[#D8C7B9] font-bold tracking-widest uppercase text-sm rounded-none hover:bg-[#D8C7B9]/10 transition-colors duration-300"
+                        >
+                            Book a Table
+                        </Link>
                     </motion.div>
                 </div>
+
+                {/* Scroll Down Indicator */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 1.5 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+                >
+                    <span className="text-[#D8C7B9]/50 uppercase tracking-widest text-xs font-bold">Scroll</span>
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[1px] h-12 bg-gradient-to-b from-[#D8C7B9]/50 to-transparent"
+                    ></motion.div>
+                </motion.div>
             </section>
 
             {/* 2. ABOUT PREVIEW SECTION */}
