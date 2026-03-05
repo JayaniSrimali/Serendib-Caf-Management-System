@@ -34,9 +34,6 @@ export const AuthProvider = ({ children }) => {
     const register = async (name, email, password) => {
         try {
             const { data } = await axiosInstance.post('/auth/register', { name, email, password });
-            setUserInfo(data);
-            localStorage.setItem('userInfo', JSON.stringify(data));
-            toast.success('Registered successfully!');
             return data;
         } catch (error) {
             toast.error(error.response?.data?.message || 'Registration failed');
