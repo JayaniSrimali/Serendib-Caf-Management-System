@@ -98,7 +98,7 @@ const Menu = () => {
                                 <div className="flex-grow flex flex-col">
                                     <div className="flex justify-between items-start mb-3 gap-2">
                                         <h3 className="font-serif font-bold text-lg text-theme-text leading-tight">{item.name}</h3>
-                                        <span className="font-bold text-theme-accent shrink-0">${item.price.toFixed(2)}</span>
+                                        <span className="font-bold text-theme-accent shrink-0">Rs. {item.price.toFixed(2)}</span>
                                     </div>
                                     <p className="text-theme-text/60 text-sm mb-6 flex-grow">{item.description}</p>
                                     <button

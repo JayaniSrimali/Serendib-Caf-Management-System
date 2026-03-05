@@ -88,7 +88,7 @@ const Cart = () => {
                                         </div>
                                     </div>
                                     <div className="font-bold text-xl text-theme-text sm:self-end sm:py-2">
-                                        ${(item.price * item.quantity).toFixed(2)}
+                                        Rs. {(item.price * item.quantity).toFixed(2)}
                                     </div>
                                 </div>
                             ))}
@@ -103,16 +103,16 @@ const Cart = () => {
                             <div className="space-y-4 mb-8 text-theme-textMuted text-sm">
                                 <div className="flex justify-between">
                                     <span>Subtotal</span>
-                                    <span className="text-white font-medium">${getCartTotal()}</span>
+                                    <span className="text-white font-medium">Rs. {getCartTotal()}</span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Taxes (10%)</span>
-                                    <span className="text-white font-medium">${(Number(getCartTotal()) * 0.1).toFixed(2)}</span>
+                                    <span className="text-white font-medium">Rs. {(Number(getCartTotal()) * 0.1).toFixed(2)}</span>
                                 </div>
                                 <div className="w-full h-px bg-[#D8C7B9]/20 my-4"></div>
                                 <div className="flex justify-between text-lg">
                                     <span className="font-serif text-white">Total</span>
-                                    <span className="font-bold text-theme-accent">${(Number(getCartTotal()) * 1.1).toFixed(2)}</span>
+                                    <span className="font-bold text-theme-accent">Rs. {(Number(getCartTotal()) * 1.1).toFixed(2)}</span>
                                 </div>
                             </div>
 

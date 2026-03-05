@@ -97,7 +97,7 @@ const Dashboard = () => {
                                             </p>
                                         </div>
                                         <div className="flex flex-col items-start md:items-end gap-2">
-                                            <span className="font-bold text-theme-accent text-lg">${order.totalPrice?.toFixed(2)}</span>
+                                            <span className="font-bold text-theme-accent text-lg">Rs. {order.totalPrice?.toFixed(2)}</span>
                                             <span className={`text-xs px-3 py-1 rounded-full flex items-center gap-1 font-bold tracking-wider uppercase
                                                 ${order.status === 'Completed' ? 'bg-green-100 text-green-700' :
                                                     order.status === 'Cancelled' ? 'bg-red-100 text-red-700' :

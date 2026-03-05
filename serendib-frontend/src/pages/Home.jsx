@@ -149,10 +149,10 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                         {[
-                            { name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: "$5.50", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: "$6.00", img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: "$7.00", img: "https://images.unsplash.com/photo-1557365362-e6e729a73e44?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: "$4.50", img: "https://images.unsplash.com/photo-1461023058943-07cb14c97940?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: "Rs. 1100.00", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: "Rs. 1400.00", img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: "Rs. 1200.00", img: "https://images.unsplash.com/photo-1557365362-e6e729a73e44?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: "Rs. 950.00", img: "https://images.unsplash.com/photo-1461023058943-07cb14c97940?auto=format&fit=crop&w=400&q=80" },
                         ].map((item, idx) => (
                             <div key={idx} className="bg-theme-bg rounded-[24px] p-5 shadow-none border border-white/5 hover:shadow-xl transition-shadow group flex flex-col h-full">
                                 <div className="rounded-[16px] overflow-hidden mb-6 h-56">
