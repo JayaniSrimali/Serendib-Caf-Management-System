@@ -1,88 +1,183 @@
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Globe, ArrowRight } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast.success("Message sent successfully! We'll get back to you soon.");
+    };
+
     return (
-        <div className="w-full bg-theme-bg min-h-screen py-16 px-6 md:px-12">
-            <div className="max-w-[1200px] mx-auto">
-                <div className="text-center mb-16">
-                    <h4 className="text-theme-dark/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Get in Touch</h4>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-6">We'd Love to Hear from You</h2>
-                    <p className="max-w-2xl mx-auto text-theme-dark/70 px-4">
-                        Whether you have a question about our menu, reservations, or anything else, our team is ready to answer all your questions.
-                    </p>
+        <div className="w-full bg-[#FDFBF7] min-h-screen">
+
+            {/* Hero Section */}
+            <div className="relative h-[450px] w-full overflow-hidden flex items-center justify-center">
+                <img
+                    src="/assets/contact-hero.png" // Using a generic path as standard, but I'll make sure it's clear
+                    alt="Café Interior"
+                    className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[#382D26]/70 backdrop-blur-[2px]"></div>
+                <div className="relative z-10 text-center px-6">
+                    <h4 className="text-theme-accent font-bold tracking-[0.3em] text-sm mb-4 uppercase">Contact Us</h4>
+                    <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6">Let's start a conversation</h1>
+                    <div className="flex items-center justify-center gap-2 text-white/60 text-sm font-medium">
+                        <span className="hover:text-theme-accent cursor-pointer transition-colors">Home</span>
+                        <ArrowRight size={14} />
+                        <span className="text-white">Contact</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-[1400px] mx-auto px-6 md:px-12 -mt-24 pb-24 relative z-20">
+                <div className="flex flex-col lg:flex-row gap-8">
+
+                    {/* Left Side: Contact Info Cards */}
+                    <div className="lg:w-1/3 flex flex-col gap-6">
+
+                        {/* Location Card */}
+                        <div className="bg-white p-10 rounded-[40px] shadow-sm border border-theme-dark/5 group hover:shadow-xl transition-all duration-500">
+                            <div className="w-14 h-14 bg-theme-bg rounded-2xl flex items-center justify-center text-theme-accent mb-8 group-hover:scale-110 transition-transform duration-500 bg-[#F8F1EB]">
+                                <MapPin size={28} />
+                            </div>
+                            <h3 className="text-2xl font-serif font-bold text-theme-dark mb-4">Visit Our Location</h3>
+                            <p className="text-theme-dark/60 leading-relaxed font-medium mb-6">
+                                123 Galle Road, Colombo 03,<br />Sri Lanka (Café Serendib Main)
+                            </p>
+                            <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-theme-accent font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all">
+                                View on Maps <ArrowRight size={16} />
+                            </a>
+                        </div>
+
+                        {/* Quick Contact Card */}
+                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-sm text-white relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-theme-accent/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+
+                            <h3 className="text-2xl font-serif font-bold mb-8 relative z-10">Quick Support</h3>
+                            <div className="space-y-6 relative z-10">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                        <Phone size={20} />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Call Us</p>
+                                        <p className="font-bold text-sm">+94 11 234 5678</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                        <Mail size={20} />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Email Us</p>
+                                        <p className="font-bold text-sm">hello@cafeserendib.lk</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                        <Globe size={20} />
+                                    </div>
+                                    <div>
+                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Website</p>
+                                        <p className="font-bold text-sm">www.cafeserendib.lk</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Opening Hours Card */}
+                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-sm text-white group">
+                            <h3 className="text-2xl font-serif font-bold mb-8 flex items-center gap-3">
+                                <Clock size={24} /> Opening Hours
+                            </h3>
+                            <div className="space-y-4 font-medium text-sm">
+                                <div className="flex justify-between border-b border-white/20 pb-2">
+                                    <span>Monday - Friday</span>
+                                    <span>7:00 AM - 10:00 PM</span>
+                                </div>
+                                <div className="flex justify-between border-b border-white/20 pb-2">
+                                    <span>Saturday</span>
+                                    <span>8:00 AM - 11:00 PM</span>
+                                </div>
+                                <div className="flex justify-between pb-2">
+                                    <span>Sunday</span>
+                                    <span>8:00 AM - 11:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Side: Contact Form Section */}
+                    <div className="lg:w-2/3 bg-white p-10 md:p-16 rounded-[40px] shadow-sm border border-theme-dark/5">
+                        <div className="mb-12">
+                            <h2 className="text-4xl font-serif font-bold text-theme-dark mb-4">Send us a message</h2>
+                            <p className="text-theme-dark/60 font-medium leading-relaxed max-w-xl">
+                                Have a question or feedback? We'd love to hear from you. Fill out the form below and our team will get back to you within 24 hours.
+                            </p>
+                        </div>
+
+                        <form className="space-y-8" onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="space-y-3">
+                                    <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Full Name</label>
+                                    <input
+                                        type="text"
+                                        required
+                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
+                                        placeholder="John Doe"
+                                    />
+                                </div>
+                                <div className="space-y-3">
+                                    <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Email Address</label>
+                                    <input
+                                        type="email"
+                                        required
+                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
+                                        placeholder="john@example.com"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Subject</label>
+                                <select className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium appearance-none cursor-pointer">
+                                    <option>General Inquiry</option>
+                                    <option>Reservation Question</option>
+                                    <option>Menu Feedback</option>
+                                    <option>Private Event</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div className="space-y-3">
+                                <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Your Message</label>
+                                <textarea
+                                    rows="6"
+                                    required
+                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium resize-none"
+                                    placeholder="Write your message here..."
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" className="bg-theme-dark text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-theme-accent transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-theme-dark/10">
+                                <Send size={18} /> Send Message Now
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-16">
-                    {/* Contact Info */}
-                    <div className="lg:w-1/3 space-y-8">
-                        <div className="bg-white p-8 rounded-[32px] shadow-sm flex items-start gap-6 border border-theme-dark/5">
-                            <div className="bg-theme-bg p-4 rounded-full text-theme-accent shrink-0">
-                                <Phone size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif font-bold text-xl text-theme-dark mb-2">Call Us</h4>
-                                <p className="text-theme-dark/60 text-sm mb-1">+94 11 234 5678</p>
-                                <p className="text-theme-dark/60 text-sm">+94 77 123 4567</p>
-                            </div>
-                        </div>
-
-                        <div className="bg-white p-8 rounded-[32px] shadow-sm flex items-start gap-6 border border-theme-dark/5">
-                            <div className="bg-theme-bg p-4 rounded-full text-theme-accent shrink-0">
-                                <Mail size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif font-bold text-xl text-theme-dark mb-2">Email Us</h4>
-                                <p className="text-theme-dark/60 text-sm mb-1">hello@cafeserendib.lk</p>
-                                <p className="text-theme-dark/60 text-sm">support@cafeserendib.lk</p>
-                            </div>
-                        </div>
-
-                        <div className="bg-white p-8 rounded-[32px] shadow-sm flex items-start gap-6 border border-theme-dark/5">
-                            <div className="bg-theme-bg p-4 rounded-full text-theme-accent shrink-0">
-                                <MapPin size={24} />
-                            </div>
-                            <div>
-                                <h4 className="font-serif font-bold text-xl text-theme-dark mb-2">Visit Us</h4>
-                                <p className="text-theme-dark/60 text-sm leading-relaxed">
-                                    123 Galle Road,<br />Colombo 03,<br />Sri Lanka
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Contact Form */}
-                    <div className="lg:w-2/3 bg-theme-dark text-white p-10 md:p-16 rounded-[40px] shadow-2xl relative overflow-hidden">
-                        {/* Abstract background blobs */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-theme-accent/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
-
-                        <div className="relative z-10">
-                            <h3 className="text-3xl font-serif font-bold mb-8">Send a Message</h3>
-                            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-theme-bg/70">First Name</label>
-                                        <input type="text" className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-theme-accent focus:bg-white/10 outline-none transition-all text-white" placeholder="John" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-sm font-semibold text-theme-bg/70">Last Name</label>
-                                        <input type="text" className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-theme-accent focus:bg-white/10 outline-none transition-all text-white" placeholder="Doe" />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-theme-bg/70">Email Address</label>
-                                    <input type="email" className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-theme-accent focus:bg-white/10 outline-none transition-all text-white" placeholder="john@example.com" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-theme-bg/70">Message</label>
-                                    <textarea rows="4" className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-theme-accent focus:bg-white/10 outline-none transition-all text-white resize-none" placeholder="How can we help you?"></textarea>
-                                </div>
-                                <button className="w-full bg-theme-accent text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-white hover:text-theme-dark transition-colors flex items-center justify-center gap-2 mt-8">
-                                    <Send size={18} /> Send Message
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                {/* Map Section */}
+                <div className="mt-20 w-full h-[500px] rounded-[50px] overflow-hidden shadow-2xl shadow-theme-dark/5 border-4 border-white">
+                    <iframe
+                        title="Cafe Location"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58281005747!2d79.77395729726563!3d6.927078600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259196321f57d%3A0xf674305dc798fd17!2sGalle%20Rd%2C%20Colombo!5e0!3m2!1sen!2slk!4v1709641234567!5m2!1sen!2slk"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                 </div>
             </div>
         </div>
