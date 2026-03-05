@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-cream text-brown-900;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brown-600 text-white px-6 py-2 rounded-md hover:bg-brown-700 transition-colors shadow-sm;
+  }
+  .btn-gold {
+    @apply bg-gold text-white px-6 py-2 rounded-md hover:bg-yellow-600 transition-colors shadow-sm;
+  }
+  .input-field {
+    @apply w-full px-4 py-2 border border-brown-200 rounded-md focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white;
+  }
+}
