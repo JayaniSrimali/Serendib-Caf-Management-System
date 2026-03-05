@@ -101,74 +101,145 @@ const Layout = ({ children }) => {
         {children}
       </main>
 
-      {/* Footer (Minimalist Light Design) */}
-      <footer className="w-full bg-white pt-20 pb-12 mt-auto px-6 md:px-12 border-t border-theme-dark/5">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      {/* Footer (Premium Dark Design) */}
+      <footer className="w-full bg-theme-dark text-[#D8C7B9] pt-24 pb-12 mt-auto px-6 md:px-12 selection:bg-theme-accent selection:text-white">
+        <div className="max-w-[1400px] mx-auto">
 
-          {/* Column 1: Logo & Copyright */}
-          <div className="flex flex-col justify-between h-full lg:col-span-1 min-h-[150px]">
-            <Link to="/" className="flex items-center gap-2 mb-8">
-              <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[35px] h-[35px] object-cover rounded-full bg-theme-dark p-0.5" />
-              <span className="text-xl font-serif font-bold text-theme-dark tracking-wide">
-                Café Serendib
-              </span>
-            </Link>
-
-            <div className="mt-auto">
-              <p className="text-xs text-theme-dark/60 font-medium mb-1">© {new Date().getFullYear()} Café Serendib, Inc.</p>
-              <p className="text-xs text-theme-dark/60 font-medium">Terms of Service | Privacy Policy</p>
-            </div>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div>
-            <h4 className="text-sm font-bold text-theme-dark mb-6">Quick Links</h4>
-            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
-              <li><Link to="/" className="hover:text-theme-accent transition-colors">Home</Link></li>
-              <li><Link to="/menu" className="hover:text-theme-accent transition-colors">Our Menu</Link></li>
-              <li><Link to="/about" className="hover:text-theme-accent transition-colors">Our Story</Link></li>
-              <li><Link to="/reserve" className="hover:text-theme-accent transition-colors">Reservations</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Our Offerings */}
-          <div>
-            <h4 className="text-sm font-bold text-theme-dark mb-6">Our Offerings</h4>
-            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Coffee Essentials</li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Fresh Pastries</li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Special Offers</li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Merchandise</li>
-            </ul>
-          </div>
-
-          {/* Column 4: Support */}
-          <div>
-            <h4 className="text-sm font-bold text-theme-dark mb-6">Support</h4>
-            <ul className="space-y-3 text-xs font-semibold text-theme-dark/60">
-              <li><Link to="/contact" className="hover:text-theme-accent transition-colors">Contact Us</Link></li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Help Center</li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Order Status</li>
-              <li className="hover:text-theme-accent cursor-pointer transition-colors">Locations</li>
-            </ul>
-          </div>
-
-          {/* Column 5: Get in touch & Socials */}
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <h4 className="text-sm font-bold text-theme-dark mb-6">Get in touch</h4>
-              <p className="text-xs font-semibold text-theme-dark/60 leading-relaxed max-w-xs">
-                Questions or feedback?<br />We'd love to hear from you.
+          {/* Top Section with Decorative Elements (Optional, based on image inspiration) */}
+          <div className="flex flex-col md:flex-row items-center justify-between border-b border-white/10 pb-16 mb-16 gap-10">
+            <div className="max-w-xl text-center md:text-left">
+              <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 italic">Experience the art of Ceylon coffee</h3>
+              <p className="text-sm md:text-base text-[#D8C7B9]/70 leading-relaxed">
+                Join our community of coffee lovers and receive exclusive brewing tips, new menu alerts, and special event invitations directly in your inbox.
               </p>
             </div>
 
-            <div className="flex gap-4 mt-8 lg:mt-auto">
-              <Facebook size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
-              <Twitter size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
-              <Instagram size={18} className="text-theme-dark/80 hover:text-theme-accent cursor-pointer transition-colors" />
+            {/* Newsletter Subscription */}
+            <div className="w-full max-w-md">
+              <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-full focus-within:border-theme-accent transition-all">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="flex-grow bg-transparent px-6 py-3 text-sm text-white placeholder:text-[#D8C7B9]/30 outline-none w-full"
+                />
+                <button className="bg-theme-accent hover:bg-theme-accent/90 text-white px-8 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap">
+                  Subscribe
+                </button>
+              </div>
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+
+            {/* Column 1: Logo & About */}
+            <div className="lg:col-span-1">
+              <Link to="/" className="flex items-center gap-3 mb-8 group">
+                <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[45px] h-[45px] object-cover rounded-full bg-theme-accent p-0.5 border border-white/20 group-hover:scale-105 transition-transform" />
+                <span className="text-2xl font-serif font-bold text-white tracking-wide">
+                  Café Serendib
+                </span>
+              </Link>
+              <p className="text-sm text-[#D8C7B9]/60 leading-relaxed mb-8 max-w-xs">
+                Crafting authentic Sri Lankan coffee experiences since 1998. Every bean tells a story of our heritage and dedication to the perfect brew.
+              </p>
+              <div className="flex gap-4">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                  <Facebook size={18} />
+                </div>
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                  <Twitter size={18} />
+                </div>
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                  <Instagram size={18} />
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2: Navigation */}
+            <div>
+              <h4 className="text-white font-serif font-bold text-lg mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-theme-accent">
+                Navigation
+              </h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link to="/" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Home</Link></li>
+                <li><Link to="/about" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Our Story</Link></li>
+                <li><Link to="/menu" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Menu</Link></li>
+                <li><Link to="/reserve" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Reservations</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Contact Info */}
+            <div>
+              <h4 className="text-white font-serif font-bold text-lg mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-theme-accent">
+                Contact Info
+              </h4>
+              <ul className="space-y-5 text-sm">
+                <li className="flex gap-4">
+                  <div className="mt-1 text-theme-accent"><MapPin size={18} /></div>
+                  <span className="text-[#D8C7B9]/60 leading-relaxed font-medium">
+                    123 Galle Road,<br />Colombo 03, Sri Lanka
+                  </span>
+                </li>
+                <li className="flex gap-4">
+                  <div className="mt-1 text-theme-accent"><Phone size={18} /></div>
+                  <span className="text-[#D8C7B9]/60 font-medium">+94 11 234 5678</span>
+                </li>
+                <li className="flex gap-4">
+                  <div className="mt-1 text-theme-accent"><Clock size={18} /></div>
+                  <span className="text-[#D8C7B9]/60 font-medium">
+                    Mon - Fri: 7:00 - 22:00<br />
+                    Sat - Sun: 8:00 - 23:00
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Customer Care */}
+            <div>
+              <h4 className="text-white font-serif font-bold text-lg mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-theme-accent">
+                Customer Care
+              </h4>
+              <ul className="space-y-4 text-sm font-medium">
+                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Help Center</Link></li>
+                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Delivery Info</Link></li>
+                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Track Order</Link></li>
+                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Privacy Policy</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 5: Instagram Preview (Visual aesthetic based on image) */}
+            <div>
+              <h4 className="text-white font-serif font-bold text-lg mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-theme-accent">
+                Gallery
+              </h4>
+              <div className="grid grid-cols-3 gap-2">
+                {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <div key={i} className="aspect-square bg-white/5 rounded-lg overflow-hidden border border-white/10 group cursor-pointer">
+                    <img
+                      src={`https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=150&q=80&sig=${i}`}
+                      alt="Coffee"
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-xs font-bold text-[#D8C7B9]/40 tracking-[0.1em] uppercase">
+              © {new Date().getFullYear()} Café Serendib — All Rights Reserved.
+            </p>
+            <div className="flex bg-white/5 px-6 py-2 rounded-full border border-white/10">
+              <span className="text-[10px] font-bold text-[#D8C7B9]/50 uppercase tracking-widest flex items-center gap-3">
+                Managed by <span className="text-theme-accent">Jayani Srimali</span>
+              </span>
+            </div>
+            <p className="text-xs font-bold text-[#D8C7B9]/40 tracking-[0.1em] uppercase">
+              Colombo, Sri Lanka
+            </p>
+          </div>
         </div>
       </footer>
     </div>
