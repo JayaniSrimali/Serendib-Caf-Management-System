@@ -129,7 +129,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
             {/* Column 1: Logo & About */}
             <div className="lg:col-span-1">
@@ -207,23 +207,6 @@ const Layout = ({ children }) => {
               </ul>
             </div>
 
-            {/* Column 5: Instagram Preview (Visual aesthetic based on image) */}
-            <div>
-              <h4 className="text-white font-serif font-bold text-lg mb-8 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-theme-accent">
-                Gallery
-              </h4>
-              <div className="grid grid-cols-3 gap-2">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                  <div key={i} className="aspect-square bg-white/5 rounded-lg overflow-hidden border border-white/10 group cursor-pointer">
-                    <img
-                      src={`https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=150&q=80&sig=${i}`}
-                      alt="Coffee"
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
 
           </div>
 
