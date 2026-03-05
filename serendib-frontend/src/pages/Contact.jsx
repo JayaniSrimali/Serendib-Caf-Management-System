@@ -1,10 +1,38 @@
-import { Mail, Phone, MapPin, Send, Clock, Globe, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, Send, Clock, Globe, ArrowRight, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import axiosInstance from '../utils/axiosInstance';
 
 const Contact = () => {
-    const handleSubmit = (e) => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: 'General Inquiry',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        toast.success("Message sent successfully! We'll get back to you soon.");
+        setLoading(true);
+        try {
+            const response = await axiosInstance.post('/contact', formData);
+            toast.success(response.data.message || "Message sent successfully!");
+            setFormData({
+                name: '',
+                email: '',
+                subject: 'General Inquiry',
+                message: ''
+            });
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Failed to send message. Please try again.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -13,7 +41,7 @@ const Contact = () => {
             {/* Hero Section */}
             <div className="relative h-[450px] w-full overflow-hidden flex items-center justify-center">
                 <img
-                    src="/assets/contact-hero.png" // Using a generic path as standard, but I'll make sure it's clear
+                    src="/assets/contact-hero.png"
                     alt="Café Interior"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -122,6 +150,9 @@ const Contact = () => {
                                     <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Full Name</label>
                                     <input
                                         type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         required
                                         className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
                                         placeholder="John Doe"
@@ -131,6 +162,9 @@ const Contact = () => {
                                     <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Email Address</label>
                                     <input
                                         type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         required
                                         className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
                                         placeholder="john@example.com"
@@ -140,18 +174,26 @@ const Contact = () => {
 
                             <div className="space-y-3">
                                 <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Subject</label>
-                                <select className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium appearance-none cursor-pointer">
-                                    <option>General Inquiry</option>
-                                    <option>Reservation Question</option>
-                                    <option>Menu Feedback</option>
-                                    <option>Private Event</option>
-                                    <option>Other</option>
+                                <select
+                                    name="subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium appearance-none cursor-pointer"
+                                >
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Reservation Question">Reservation Question</option>
+                                    <option value="Menu Feedback">Menu Feedback</option>
+                                    <option value="Private Event">Private Event</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 
                             <div className="space-y-3">
                                 <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Your Message</label>
                                 <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     rows="6"
                                     required
                                     className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium resize-none"
@@ -159,8 +201,20 @@ const Contact = () => {
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className="bg-theme-dark text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-theme-accent transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-theme-dark/10">
-                                <Send size={18} /> Send Message Now
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="bg-theme-dark text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-theme-accent disabled:bg-theme-dark/50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-theme-dark/10"
+                            >
+                                {loading ? (
+                                    <>
+                                        <Loader2 size={18} className="animate-spin" /> Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={18} /> Send Message Now
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>
