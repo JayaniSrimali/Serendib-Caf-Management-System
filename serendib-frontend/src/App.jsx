@@ -29,10 +29,10 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="bg-theme-bg min-h-screen font-sans text-theme-dark flex flex-col overflow-x-hidden selection:bg-theme-accent selection:text-white">
+    <div className="bg-theme-bg min-h-screen font-sans text-theme-text flex flex-col overflow-x-hidden selection:bg-theme-accent selection:text-white">
 
       {/* Top Bar */}
-      <div className="bg-theme-dark text-[#D8C7B9] text-xs py-2 px-6 md:px-12 flex justify-between items-center z-50 relative">
+      <div className="bg-theme-dark text-theme-textMuted text-xs py-2 px-6 md:px-12 flex justify-between items-center z-50 relative">
         <div className="flex gap-6 max-w-[1400px] mx-auto w-full justify-between items-center">
           <p className="hidden md:block">Welcome to Café Serendib — The True Taste of Ceylon</p>
           <div className="flex items-center gap-6">
@@ -47,30 +47,30 @@ const Layout = ({ children }) => {
       </div>
 
       {/* Main Navigation */}
-      <header className="w-full bg-theme-bg/95 backdrop-blur-md sticky top-0 z-40 border-b border-theme-dark/10 shadow-sm">
+      <header className="w-full bg-theme-bg/95 backdrop-blur-md sticky top-0 z-40 border-b border-theme-text/20/10 shadow-none border border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[45px] h-[45px] object-cover rounded-full shadow-md bg-theme-dark p-0.5 border-2 border-theme-accent" />
-            <span className="text-2xl font-serif font-bold text-theme-dark tracking-wide">
+            <span className="text-2xl font-serif font-bold text-theme-text tracking-wide">
               Café Serendib
             </span>
           </Link>
 
           {/* Middle Links */}
           <nav className="hidden lg:flex items-center gap-10 font-medium text-[15px]">
-            <Link to="/" className="text-theme-dark hover:text-theme-accent transition-colors">Home</Link>
-            <Link to="/about" className="text-theme-dark hover:text-theme-accent transition-colors">Our Story</Link>
-            <Link to="/menu" className="text-theme-dark hover:text-theme-accent transition-colors">Menu</Link>
-            <Link to="/contact" className="text-theme-dark hover:text-theme-accent transition-colors">Contact</Link>
+            <Link to="/" className="text-theme-text hover:text-theme-accent transition-colors">Home</Link>
+            <Link to="/about" className="text-theme-text hover:text-theme-accent transition-colors">Our Story</Link>
+            <Link to="/menu" className="text-theme-text hover:text-theme-accent transition-colors">Menu</Link>
+            <Link to="/contact" className="text-theme-text hover:text-theme-accent transition-colors">Contact</Link>
           </nav>
 
           {/* Right Icons / CTA */}
           <div className="flex items-center gap-6">
-            <button className="hidden sm:block text-theme-dark hover:text-theme-accent transition-colors"><Search size={22} /></button>
+            <button className="hidden sm:block text-theme-text hover:text-theme-accent transition-colors"><Search size={22} /></button>
 
-            <Link to="/cart" className="relative text-theme-dark hover:text-theme-accent transition-colors hidden sm:block">
+            <Link to="/cart" className="relative text-theme-text hover:text-theme-accent transition-colors hidden sm:block">
               <ShoppingBag size={22} />
               {cartItems?.length > 0 && (
                 <span className="absolute -top-1.5 -right-2 bg-theme-accent text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -80,11 +80,11 @@ const Layout = ({ children }) => {
             </Link>
 
             {userInfo ? (
-              <Link to="/dashboard" className="hidden border-2 border-theme-dark text-theme-dark px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
+              <Link to="/dashboard" className="hidden border-2 border-theme-text/20 text-theme-text px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
                 Dashboard
               </Link>
             ) : (
-              <Link to="/login" className="hidden border-2 border-theme-dark text-theme-dark px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
+              <Link to="/login" className="hidden border-2 border-theme-text/20 text-theme-text px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
                 Log In
               </Link>
             )}
@@ -102,14 +102,14 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Footer (Premium Dark Design) */}
-      <footer className="w-full bg-theme-dark text-[#D8C7B9] pt-24 pb-12 mt-auto px-6 md:px-12 selection:bg-theme-accent selection:text-white">
+      <footer className="w-full bg-theme-dark text-theme-textMuted pt-24 pb-12 mt-auto px-6 md:px-12 selection:bg-theme-accent selection:text-white">
         <div className="max-w-[1400px] mx-auto">
 
           {/* Top Section with Decorative Elements (Optional, based on image inspiration) */}
           <div className="flex flex-col md:flex-row items-center justify-between border-b border-white/10 pb-16 mb-16 gap-10">
             <div className="max-w-xl text-center md:text-left">
               <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 italic">Experience the art of Ceylon coffee</h3>
-              <p className="text-sm md:text-base text-[#D8C7B9]/70 leading-relaxed">
+              <p className="text-sm md:text-base text-theme-textMuted/70 leading-relaxed">
                 Join our community of coffee lovers and receive exclusive brewing tips, new menu alerts, and special event invitations directly in your inbox.
               </p>
             </div>
@@ -120,7 +120,7 @@ const Layout = ({ children }) => {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="flex-grow bg-transparent px-6 py-3 text-sm text-white placeholder:text-[#D8C7B9]/30 outline-none w-full"
+                  className="flex-grow bg-transparent px-6 py-3 text-sm text-white placeholder:text-theme-textMuted/30 outline-none w-full"
                 />
                 <button className="bg-theme-accent hover:bg-theme-accent/90 text-white px-8 py-3 rounded-full text-sm font-bold transition-all whitespace-nowrap">
                   Subscribe
@@ -139,17 +139,17 @@ const Layout = ({ children }) => {
                   Café Serendib
                 </span>
               </Link>
-              <p className="text-sm text-[#D8C7B9]/60 leading-relaxed mb-8 max-w-xs">
+              <p className="text-sm text-theme-textMuted/60 leading-relaxed mb-8 max-w-xs">
                 Crafting authentic Sri Lankan coffee experiences since 1998. Every bean tells a story of our heritage and dedication to the perfect brew.
               </p>
               <div className="flex gap-4">
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Facebook size={18} />
                 </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Twitter size={18} />
                 </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-[#D8C7B9] hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Instagram size={18} />
                 </div>
               </div>
@@ -161,10 +161,10 @@ const Layout = ({ children }) => {
                 Navigation
               </h4>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link to="/" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Home</Link></li>
-                <li><Link to="/about" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Our Story</Link></li>
-                <li><Link to="/menu" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Menu</Link></li>
-                <li><Link to="/reserve" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Reservations</Link></li>
+                <li><Link to="/" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Home</Link></li>
+                <li><Link to="/about" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Our Story</Link></li>
+                <li><Link to="/menu" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Menu</Link></li>
+                <li><Link to="/reserve" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Reservations</Link></li>
               </ul>
             </div>
 
@@ -176,17 +176,17 @@ const Layout = ({ children }) => {
               <ul className="space-y-5 text-sm">
                 <li className="flex gap-4">
                   <div className="mt-1 text-theme-accent"><MapPin size={18} /></div>
-                  <span className="text-[#D8C7B9]/60 leading-relaxed font-medium">
+                  <span className="text-theme-textMuted/60 leading-relaxed font-medium">
                     123 Galle Road,<br />Colombo 03, Sri Lanka
                   </span>
                 </li>
                 <li className="flex gap-4">
                   <div className="mt-1 text-theme-accent"><Phone size={18} /></div>
-                  <span className="text-[#D8C7B9]/60 font-medium">+94 11 234 5678</span>
+                  <span className="text-theme-textMuted/60 font-medium">+94 11 234 5678</span>
                 </li>
                 <li className="flex gap-4">
                   <div className="mt-1 text-theme-accent"><Clock size={18} /></div>
-                  <span className="text-[#D8C7B9]/60 font-medium">
+                  <span className="text-theme-textMuted/60 font-medium">
                     Mon - Fri: 7:00 - 22:00<br />
                     Sat - Sun: 8:00 - 23:00
                   </span>
@@ -200,10 +200,10 @@ const Layout = ({ children }) => {
                 Customer Care
               </h4>
               <ul className="space-y-4 text-sm font-medium">
-                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Help Center</Link></li>
-                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Delivery Info</Link></li>
-                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Track Order</Link></li>
-                <li><Link to="/contact" className="text-[#D8C7B9]/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Privacy Policy</Link></li>
+                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Help Center</Link></li>
+                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Delivery Info</Link></li>
+                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Track Order</Link></li>
+                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Privacy Policy</Link></li>
               </ul>
             </div>
 
@@ -211,15 +211,15 @@ const Layout = ({ children }) => {
           </div>
 
           <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-xs font-bold text-[#D8C7B9]/40 tracking-[0.1em] uppercase">
+            <p className="text-xs font-bold text-theme-textMuted/40 tracking-[0.1em] uppercase">
               © {new Date().getFullYear()} Café Serendib — All Rights Reserved.
             </p>
             <div className="flex bg-white/5 px-6 py-2 rounded-full border border-white/10">
-              <span className="text-[10px] font-bold text-[#D8C7B9]/50 uppercase tracking-widest flex items-center gap-3">
+              <span className="text-[10px] font-bold text-theme-textMuted/50 uppercase tracking-widest flex items-center gap-3">
                 Managed by <span className="text-theme-accent">Jayani Srimali</span>
               </span>
             </div>
-            <p className="text-xs font-bold text-[#D8C7B9]/40 tracking-[0.1em] uppercase">
+            <p className="text-xs font-bold text-theme-textMuted/40 tracking-[0.1em] uppercase">
               Colombo, Sri Lanka
             </p>
           </div>

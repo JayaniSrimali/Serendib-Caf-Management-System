@@ -6,6 +6,6 @@
 
 @layer base {
   body {
-    @apply font-sans bg-theme-bg text-theme-dark;
+    @apply font-sans bg-theme-bg text-theme-text;
   }
 }

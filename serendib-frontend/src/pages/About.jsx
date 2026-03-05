@@ -5,21 +5,21 @@ const About = () => {
         <div className="w-full bg-theme-bg min-h-screen py-16 px-6 md:px-12">
             <div className="max-w-[1400px] mx-auto">
                 <div className="text-center mb-16">
-                    <h4 className="text-theme-dark/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Our Story</h4>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-6">A Journey of Flavor</h2>
-                    <p className="max-w-2xl mx-auto text-theme-dark/70 px-4">
+                    <h4 className="text-theme-text/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Our Story</h4>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-6">A Journey of Flavor</h2>
+                    <p className="max-w-2xl mx-auto text-theme-text/70 px-4">
                         From the lush hills of Sri Lanka to your cup, discover the passion and history behind Café Serendib.
                     </p>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center gap-16 mb-24 bg-white rounded-[40px] p-8 md:p-16 shadow-sm overflow-hidden relative">
+                <div className="flex flex-col lg:flex-row items-center gap-16 mb-24 bg-theme-card rounded-[40px] p-8 md:p-16 shadow-none border border-white/5 overflow-hidden relative">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-theme-bg rounded-bl-full opacity-60"></div>
                     <div className="lg:w-1/2 relative z-10 space-y-6">
-                        <h3 className="text-3xl font-serif font-bold text-theme-dark">The Heart of Ceylon</h3>
-                        <p className="text-theme-dark/70 leading-relaxed text-lg">
+                        <h3 className="text-3xl font-serif font-bold text-theme-text">The Heart of Ceylon</h3>
+                        <p className="text-theme-text/70 leading-relaxed text-lg">
                             Founded in 2020, Café Serendib was born out of a profound love for traditional Sri Lankan flavors and modern coffee culture. The name "Serendib" is an ancient name for Sri Lanka, famously known as the origin of the word "serendipity" - meaning a happy or pleasant surprise.
                         </p>
-                        <p className="text-theme-dark/70 leading-relaxed text-lg">
+                        <p className="text-theme-text/70 leading-relaxed text-lg">
                             That's exactly what we aim to deliver with every cup and every bite: a pleasant surprise. We source our beans ethically from local farmers, ensuring the highest quality while supporting our community.
                         </p>
                     </div>

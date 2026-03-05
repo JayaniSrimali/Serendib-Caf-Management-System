@@ -49,7 +49,7 @@ const Home = () => {
                             className="text-5xl md:text-7xl lg:text-[90px] font-serif font-bold text-white leading-tight drop-shadow-2xl"
                         >
                             The True Taste <br className="hidden md:block" />
-                            <span className="italic font-light text-[#D8C7B9]">of Ceylon</span>
+                            <span className="italic font-light text-theme-textMuted">of Ceylon</span>
                         </motion.h1>
                     </div>
 
@@ -58,7 +58,7 @@ const Home = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.8 }}
-                        className="text-[#D8C7B9]/90 text-lg md:text-xl font-light max-w-2xl mb-12 drop-shadow-lg leading-relaxed"
+                        className="text-theme-textMuted/90 text-lg md:text-xl font-light max-w-2xl mb-12 drop-shadow-lg leading-relaxed"
                     >
                         Immerse yourself in an unforgettable coffee experience. Crafted with passion, authentic spices, and the finest beans in Sri Lanka.
                     </motion.p>
@@ -72,13 +72,13 @@ const Home = () => {
                     >
                         <Link
                             to="/menu"
-                            className="w-full sm:w-auto px-10 py-4 bg-theme-accent text-white font-bold tracking-widest uppercase text-sm rounded-none hover:bg-white hover:text-theme-dark transition-colors duration-300 shadow-xl"
+                            className="w-full sm:w-auto px-10 py-4 bg-theme-accent text-white font-bold tracking-widest uppercase text-sm rounded-none hover:bg-theme-card hover:text-theme-text transition-colors duration-300 shadow-xl"
                         >
                             Explore Menu
                         </Link>
                         <Link
                             to="/reserve"
-                            className="w-full sm:w-auto px-10 py-4 bg-transparent border border-[#D8C7B9] text-[#D8C7B9] font-bold tracking-widest uppercase text-sm rounded-none hover:bg-[#D8C7B9]/10 transition-colors duration-300"
+                            className="w-full sm:w-auto px-10 py-4 bg-transparent border border-[#D8C7B9] text-theme-textMuted font-bold tracking-widest uppercase text-sm rounded-none hover:bg-[#D8C7B9]/10 transition-colors duration-300"
                         >
                             Book a Table
                         </Link>
@@ -92,7 +92,7 @@ const Home = () => {
                     transition={{ duration: 1, delay: 1.5 }}
                     className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
                 >
-                    <span className="text-[#D8C7B9]/50 uppercase tracking-widest text-xs font-bold">Scroll</span>
+                    <span className="text-theme-textMuted/50 uppercase tracking-widest text-xs font-bold">Scroll</span>
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -104,14 +104,14 @@ const Home = () => {
             {/* 2. ABOUT PREVIEW SECTION */}
             <section className="w-full bg-theme-bg py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto">
-                    <div className="bg-white rounded-[40px] shadow-sm p-10 md:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-16 relative overflow-hidden">
+                    <div className="bg-theme-card rounded-[40px] shadow-none border border-white/5 p-10 md:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-16 relative overflow-hidden">
                         {/* Abstract shapes inside the white card */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-theme-bg rounded-bl-full opacity-60"></div>
 
                         <div className="lg:w-1/2 relative z-10">
                             <h4 className="text-theme-accent font-bold tracking-[0.2em] text-sm mb-4 uppercase">Discover</h4>
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-6">Our Story</h2>
-                            <p className="text-theme-dark/70 text-lg leading-relaxed mb-8">
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-6">Our Story</h2>
+                            <p className="text-theme-text/70 text-lg leading-relaxed mb-8">
                                 At Café Serendib, we blend tradition with modern flavors. Inspired by the rich heritage of Ceylon, our café offers a unique experience filled with aroma, comfort, and unforgettable taste.
                             </p>
                             <Link to="/about" className="text-theme-accent font-bold uppercase tracking-wider text-sm flex items-center gap-2 hover:text-theme-accentDark transition-colors group">
@@ -141,9 +141,9 @@ const Home = () => {
             {/* 3. FEATURED MENU SECTION */}
             <section className="w-full bg-[#EADDCD] py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto text-center">
-                    <h4 className="text-theme-dark/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Taste The Best</h4>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-6">Our Signature Favorites</h2>
-                    <p className="max-w-2xl mx-auto text-theme-dark/70 mb-16 px-4">
+                    <h4 className="text-theme-text/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Taste The Best</h4>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-6">Our Signature Favorites</h2>
+                    <p className="max-w-2xl mx-auto text-theme-text/70 mb-16 px-4">
                         Carefully crafted drinks and pastries blending local spices with world-class beans. Every item is a masterpiece.
                     </p>
 
@@ -154,16 +154,16 @@ const Home = () => {
                             { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: "$7.00", img: "https://images.unsplash.com/photo-1557365362-e6e729a73e44?auto=format&fit=crop&w=400&q=80" },
                             { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: "$4.50", img: "https://images.unsplash.com/photo-1461023058943-07cb14c97940?auto=format&fit=crop&w=400&q=80" },
                         ].map((item, idx) => (
-                            <div key={idx} className="bg-theme-bg rounded-[24px] p-5 shadow-sm hover:shadow-xl transition-shadow group flex flex-col h-full">
+                            <div key={idx} className="bg-theme-bg rounded-[24px] p-5 shadow-none border border-white/5 hover:shadow-xl transition-shadow group flex flex-col h-full">
                                 <div className="rounded-[16px] overflow-hidden mb-6 h-56">
                                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 </div>
                                 <div className="flex-grow flex flex-col">
                                     <div className="flex justify-between items-start mb-3 gap-2">
-                                        <h3 className="font-serif font-bold text-lg text-theme-dark leading-tight">{item.name}</h3>
+                                        <h3 className="font-serif font-bold text-lg text-theme-text leading-tight">{item.name}</h3>
                                         <span className="font-bold text-theme-accent shrink-0">{item.price}</span>
                                     </div>
-                                    <p className="text-theme-dark/60 text-sm mb-6 flex-grow">{item.desc}</p>
+                                    <p className="text-theme-text/60 text-sm mb-6 flex-grow">{item.desc}</p>
                                     <button className="w-full bg-theme-accent text-white py-3 rounded-xl font-bold text-sm tracking-wide hover:bg-theme-dark transition-colors flex items-center justify-center gap-2">
                                         <ShoppingBag size={16} /> Add to Cart
                                     </button>
@@ -186,7 +186,7 @@ const Home = () => {
                     </div>
                     <div className="lg:w-1/2">
                         <h4 className="text-theme-accent font-bold tracking-[0.2em] text-sm mb-4 uppercase">Promises</h4>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-8">Why Café Serendib?</h2>
+                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-8">Why Café Serendib?</h2>
 
                         <div className="space-y-6">
                             {[
@@ -195,11 +195,11 @@ const Home = () => {
                                 "Cozy & Relaxing Atmosphere",
                                 "Friendly Service"
                             ].map((point, i) => (
-                                <div key={i} className="flex items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border border-transparent hover:border-theme-accent/30 transition-colors">
+                                <div key={i} className="flex items-center gap-4 bg-theme-card p-5 rounded-2xl shadow-none border border-white/5 border border-transparent hover:border-theme-accent/30 transition-colors">
                                     <div className="bg-theme-bg p-3 rounded-full text-theme-accent">
                                         <CheckCircle2 size={24} />
                                     </div>
-                                    <span className="text-lg font-medium text-theme-dark">{point}</span>
+                                    <span className="text-lg font-medium text-theme-text">{point}</span>
                                 </div>
                             ))}
                         </div>
@@ -225,7 +225,7 @@ const Home = () => {
                         </div>
 
                         {/* Text area */}
-                        <div className="md:w-1/2 p-12 lg:p-16 flex flex-col justify-center relative z-10 text-theme-dark">
+                        <div className="md:w-1/2 p-12 lg:p-16 flex flex-col justify-center relative z-10 text-theme-text">
                             <h4 className="font-bold tracking-[0.2em] text-sm mb-2 uppercase opacity-70">Today’s Special Offer</h4>
                             <h2 className="text-3xl lg:text-[40px] font-serif font-bold leading-tight mb-6">
                                 Enjoy 15% off on all signature coffees every Friday evening!
@@ -241,8 +241,8 @@ const Home = () => {
             {/* 6. CUSTOMER TESTIMONIALS */}
             <section className="w-full bg-[#EADDCD] py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto text-center">
-                    <h4 className="text-theme-dark/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Reviews</h4>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark mb-16">What Our Guests Say</h2>
+                    <h4 className="text-theme-text/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Reviews</h4>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-16">What Our Guests Say</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
                         {[
@@ -250,20 +250,20 @@ const Home = () => {
                             { name: "Nuwan D.", role: "Food Critic", rating: 5, review: "A perfect blend of modern café aesthetics and local flavors. The Kithul cake is an absolute masterpiece and a must-try!" },
                             { name: "Emily R.", role: "Regular Customer", rating: 4, review: "My new favorite spot to work and relax. Fast wifi, great seating, and the Ceylon latte is out of this world." }
                         ].map((testi, i) => (
-                            <div key={i} className="bg-theme-bg p-8 lg:p-10 rounded-[30px] shadow-sm relative pt-12">
+                            <div key={i} className="bg-theme-bg p-8 lg:p-10 rounded-[30px] shadow-none border border-white/5 relative pt-12">
                                 <div className="absolute top-0 right-10 transform -translate-y-1/2 bg-theme-accent text-white p-3 rounded-full shadow-lg">
                                     <Quote size={24} className="fill-current" />
                                 </div>
                                 <div className="flex gap-1 mb-6">
                                     {[...Array(5)].map((_, idx) => (
-                                        <Star key={idx} size={18} className={idx < testi.rating ? "text-theme-accent fill-theme-accent" : "text-theme-dark/20"} />
+                                        <Star key={idx} size={18} className={idx < testi.rating ? "text-theme-accent fill-theme-accent" : "text-theme-text/20"} />
                                     ))}
                                 </div>
-                                <p className="text-theme-dark/80 italic mb-8 flex-grow leading-relaxed">
+                                <p className="text-theme-text/80 italic mb-8 flex-grow leading-relaxed">
                                     "{testi.review}"
                                 </p>
-                                <div className="border-t border-theme-dark/10 pt-6">
-                                    <h4 className="font-serif font-bold text-lg text-theme-dark">{testi.name}</h4>
+                                <div className="border-t border-theme-text/20/10 pt-6">
+                                    <h4 className="font-serif font-bold text-lg text-theme-text">{testi.name}</h4>
                                     <p className="text-sm text-theme-accent font-medium">{testi.role}</p>
                                 </div>
                             </div>
@@ -278,8 +278,8 @@ const Home = () => {
                 <div className="absolute right-[-10%] bottom-[-20%] w-[600px] h-[600px] bg-theme-accent/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
                 <div className="max-w-[800px] mx-auto text-center relative z-10">
-                    <h2 className="text-5xl md:text-6xl font-serif font-bold text-theme-dark mb-8">Ready to Relax and Sip?</h2>
-                    <p className="text-lg md:text-xl text-theme-dark/70 mb-12">
+                    <h2 className="text-5xl md:text-6xl font-serif font-bold text-theme-text mb-8">Ready to Relax and Sip?</h2>
+                    <p className="text-lg md:text-xl text-theme-text/70 mb-12">
                         Reserve your table today or order online and enjoy the Café Serendib experience from anywhere.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-6">

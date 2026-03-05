@@ -8,11 +8,13 @@ export default {
         extend: {
             colors: {
                 theme: {
-                    bg: '#F8F1EB', // Light cream background from design
-                    dark: '#382D26', // Dark brown used for text and footer
-                    accent: '#BA8454', // Caramel/Light brown for buttons
-                    accentDark: '#8C5A35',
-                    card: '#FFFFFF',
+                    bg: '#0F0B09', // Deepest black-brown background
+                    dark: '#1C130E', // Slightly lighter dark brown for contrasting sections
+                    card: '#1F1511', // Card background (almost black brown)
+                    text: '#EAE0D5', // Light cream color for main text
+                    textMuted: '#A8998C', // Muted text color for secondary info
+                    accent: '#D49A6A', // Bright Caramel for primary actions
+                    accentDark: '#A6734A', // Darker Caramel for hover states
                 }
             },
             fontFamily: {

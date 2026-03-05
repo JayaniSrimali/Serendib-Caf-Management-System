@@ -34,17 +34,17 @@ const Reserve = () => {
 
     return (
         <div className="w-full min-h-screen bg-theme-bg py-20 px-6 md:px-12 flex items-center justify-center">
-            <div className="max-w-[1200px] w-full mx-auto flex flex-col lg:flex-row bg-white rounded-[40px] shadow-2xl overflow-hidden">
+            <div className="max-w-[1200px] w-full mx-auto flex flex-col lg:flex-row bg-theme-card rounded-[40px] shadow-2xl overflow-hidden">
 
                 {/* Left side info/image */}
                 <div className="lg:w-2/5 relative bg-theme-dark text-white p-12 flex flex-col justify-center overflow-hidden min-h-[400px]">
                     <div className="absolute inset-0 z-0 opacity-20"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80" alt="Cafe" className="w-full h-full object-cover" /></div>
                     <div className="relative z-10">
                         <h2 className="text-4xl font-serif font-bold mb-6 text-theme-bg">Reserve Your Experience</h2>
-                        <p className="text-[#D8C7B9] mb-10 leading-relaxed text-sm lg:text-base">
+                        <p className="text-theme-textMuted mb-10 leading-relaxed text-sm lg:text-base">
                             Whether it's a cozy coffee date, a business meeting, or a warm gathering with friends, secure your perfect spot at Café Serendib.
                         </p>
-                        <ul className="space-y-6 text-[#D8C7B9] text-sm">
+                        <ul className="space-y-6 text-theme-textMuted text-sm">
                             <li className="flex items-center gap-4"><Calendar className="text-theme-accent" /> Open Every Day</li>
                             <li className="flex items-center gap-4"><Clock className="text-theme-accent" /> 07:00 AM - 11:00 PM</li>
                             <li className="flex items-center gap-4"><Phone className="text-theme-accent" /> +94 11 234 5678</li>
@@ -54,38 +54,38 @@ const Reserve = () => {
 
                 {/* Right side form */}
                 <div className="lg:w-3/5 p-10 md:p-16">
-                    <h3 className="text-2xl font-serif font-bold text-theme-dark mb-8">Book a Table</h3>
+                    <h3 className="text-2xl font-serif font-bold text-theme-text mb-8">Book a Table</h3>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><User size={16} /> Full Name</label>
-                                <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all" placeholder="John Doe" />
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><User size={16} /> Full Name</label>
+                                <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all" placeholder="John Doe" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><Mail size={16} /> Email Address</label>
-                                <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all" placeholder="john@example.com" />
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><Phone size={16} /> Phone Number</label>
-                                <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all" placeholder="+94 7X XXX XXXX" />
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><Users size={16} /> Number of Guests</label>
-                                <input required type="number" min="1" max="20" name="guests" value={formData.guests} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all" />
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><Mail size={16} /> Email Address</label>
+                                <input required type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all" placeholder="john@example.com" />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><Calendar size={16} /> Date</label>
-                                <input required type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all text-theme-dark" />
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><Phone size={16} /> Phone Number</label>
+                                <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all" placeholder="+94 7X XXX XXXX" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-semibold text-theme-dark/70 flex items-center gap-2"><Clock size={16} /> Time</label>
-                                <input required type="time" name="time" value={formData.time} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-dark/10 focus:border-theme-accent focus:bg-white outline-none transition-all text-theme-dark" />
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><Users size={16} /> Number of Guests</label>
+                                <input required type="number" min="1" max="20" name="guests" value={formData.guests} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all" />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><Calendar size={16} /> Date</label>
+                                <input required type="date" name="date" value={formData.date} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all text-theme-text" />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-semibold text-theme-text/70 flex items-center gap-2"><Clock size={16} /> Time</label>
+                                <input required type="time" name="time" value={formData.time} onChange={handleChange} className="w-full px-4 py-3 rounded-xl bg-theme-bg/50 border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card outline-none transition-all text-theme-text" />
                             </div>
                         </div>
 

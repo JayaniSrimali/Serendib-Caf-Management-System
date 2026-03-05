@@ -36,7 +36,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="w-full bg-[#FDFBF7] min-h-screen">
+        <div className="w-full bg-theme-bg min-h-screen">
 
             {/* Hero Section */}
             <div className="relative h-[450px] w-full overflow-hidden flex items-center justify-center">
@@ -64,12 +64,12 @@ const Contact = () => {
                     <div className="lg:w-1/3 flex flex-col gap-6">
 
                         {/* Location Card */}
-                        <div className="bg-white p-10 rounded-[40px] shadow-sm border border-theme-dark/5 group hover:shadow-xl transition-all duration-500">
-                            <div className="w-14 h-14 bg-theme-bg rounded-2xl flex items-center justify-center text-theme-accent mb-8 group-hover:scale-110 transition-transform duration-500 bg-[#F8F1EB]">
+                        <div className="bg-theme-card p-10 rounded-[40px] shadow-none border border-white/5 border border-theme-text/20/5 group hover:shadow-xl transition-all duration-500">
+                            <div className="w-14 h-14 bg-theme-bg rounded-2xl flex items-center justify-center text-theme-accent mb-8 group-hover:scale-110 transition-transform duration-500 bg-theme-card">
                                 <MapPin size={28} />
                             </div>
-                            <h3 className="text-2xl font-serif font-bold text-theme-dark mb-4">Visit Our Location</h3>
-                            <p className="text-theme-dark/60 leading-relaxed font-medium mb-6">
+                            <h3 className="text-2xl font-serif font-bold text-theme-text mb-4">Visit Our Location</h3>
+                            <p className="text-theme-text/60 leading-relaxed font-medium mb-6">
                                 123 Galle Road, Colombo 03,<br />Sri Lanka (Café Serendib Main)
                             </p>
                             <a href="https://maps.google.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-theme-accent font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all">
@@ -78,7 +78,7 @@ const Contact = () => {
                         </div>
 
                         {/* Quick Contact Card */}
-                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-sm text-white relative overflow-hidden group">
+                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-none border border-white/5 text-white relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-theme-accent/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
                             <h3 className="text-2xl font-serif font-bold mb-8 relative z-10">Quick Support</h3>
@@ -114,7 +114,7 @@ const Contact = () => {
                         </div>
 
                         {/* Opening Hours Card */}
-                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-sm text-white group">
+                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-none border border-white/5 text-white group">
                             <h3 className="text-2xl font-serif font-bold mb-8 flex items-center gap-3">
                                 <Clock size={24} /> Opening Hours
                             </h3>
@@ -136,10 +136,10 @@ const Contact = () => {
                     </div>
 
                     {/* Right Side: Contact Form Section */}
-                    <div className="lg:w-2/3 bg-white p-10 md:p-16 rounded-[40px] shadow-sm border border-theme-dark/5">
+                    <div className="lg:w-2/3 bg-theme-card p-10 md:p-16 rounded-[40px] shadow-none border border-white/5 border border-theme-text/20/5">
                         <div className="mb-12">
-                            <h2 className="text-4xl font-serif font-bold text-theme-dark mb-4">Send us a message</h2>
-                            <p className="text-theme-dark/60 font-medium leading-relaxed max-w-xl">
+                            <h2 className="text-4xl font-serif font-bold text-theme-text mb-4">Send us a message</h2>
+                            <p className="text-theme-text/60 font-medium leading-relaxed max-w-xl">
                                 Have a question or feedback? We'd love to hear from you. Fill out the form below and our team will get back to you within 24 hours.
                             </p>
                         </div>
@@ -147,38 +147,38 @@ const Contact = () => {
                         <form className="space-y-8" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="space-y-3">
-                                    <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Full Name</label>
+                                    <label className="text-xs font-bold text-theme-text uppercase tracking-widest ml-1">Full Name</label>
                                     <input
                                         type="text"
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
+                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium"
                                         placeholder="John Doe"
                                     />
                                 </div>
                                 <div className="space-y-3">
-                                    <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Email Address</label>
+                                    <label className="text-xs font-bold text-theme-text uppercase tracking-widest ml-1">Email Address</label>
                                     <input
                                         type="email"
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium"
+                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium"
                                         placeholder="john@example.com"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-3">
-                                <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Subject</label>
+                                <label className="text-xs font-bold text-theme-text uppercase tracking-widest ml-1">Subject</label>
                                 <select
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium appearance-none cursor-pointer"
+                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium appearance-none cursor-pointer"
                                 >
                                     <option value="General Inquiry">General Inquiry</option>
                                     <option value="Reservation Question">Reservation Question</option>
@@ -189,14 +189,14 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-3">
-                                <label className="text-xs font-bold text-theme-dark uppercase tracking-widest ml-1">Your Message</label>
+                                <label className="text-xs font-bold text-theme-text uppercase tracking-widest ml-1">Your Message</label>
                                 <textarea
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
                                     rows="6"
                                     required
-                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-dark/10 focus:border-theme-accent focus:bg-white focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-dark font-medium resize-none"
+                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium resize-none"
                                     placeholder="Write your message here..."
                                 ></textarea>
                             </div>

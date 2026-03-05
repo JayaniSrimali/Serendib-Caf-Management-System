@@ -44,7 +44,7 @@ const Dashboard = () => {
                 <div className="flex flex-col md:flex-row items-start lg:items-center justify-between gap-8 mb-16">
                     <div>
                         <h4 className="text-theme-accent font-bold tracking-[0.2em] text-sm mb-4 uppercase">My Account</h4>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark">
+                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text">
                             Welcome, {userInfo.name}
                         </h2>
                     </div>
@@ -55,13 +55,13 @@ const Dashboard = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Profile Panel */}
-                    <div className="bg-white p-8 rounded-[32px] shadow-sm border border-theme-dark/5 self-start">
+                    <div className="bg-theme-card p-8 rounded-[32px] shadow-none border border-white/5 border border-theme-text/20/5 self-start">
                         <div className="w-16 h-16 bg-theme-bg rounded-full flex items-center justify-center text-theme-accent mb-6">
                             <User size={32} />
                         </div>
-                        <h3 className="text-2xl font-serif font-bold text-theme-dark mb-4">Profile Info</h3>
-                        <p className="text-theme-dark/70 font-medium mb-1">{userInfo.name}</p>
-                        <p className="text-theme-dark/60 text-sm mb-4">{userInfo.email}</p>
+                        <h3 className="text-2xl font-serif font-bold text-theme-text mb-4">Profile Info</h3>
+                        <p className="text-theme-text/70 font-medium mb-1">{userInfo.name}</p>
+                        <p className="text-theme-text/60 text-sm mb-4">{userInfo.email}</p>
 
                         {userInfo.isAdmin && (
                             <span className="bg-theme-accent text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest leading-none block w-max mt-4">
@@ -71,28 +71,28 @@ const Dashboard = () => {
                     </div>
 
                     {/* Orders Panel */}
-                    <div className="bg-white p-8 rounded-[32px] shadow-sm border border-theme-dark/5 lg:col-span-2">
-                        <h3 className="text-2xl font-serif font-bold text-theme-dark mb-6 flex items-center gap-3">
+                    <div className="bg-theme-card p-8 rounded-[32px] shadow-none border border-white/5 border border-theme-text/20/5 lg:col-span-2">
+                        <h3 className="text-2xl font-serif font-bold text-theme-text mb-6 flex items-center gap-3">
                             <ShoppingBag className="text-theme-accent" /> Recent Orders
                         </h3>
 
                         {loading ? (
-                            <div className="text-center py-10 text-theme-dark/50 font-medium">Loading orders...</div>
+                            <div className="text-center py-10 text-theme-text/50 font-medium">Loading orders...</div>
                         ) : orders.length === 0 ? (
-                            <div className="text-center py-10 bg-theme-bg rounded-2xl border-2 border-dashed border-theme-dark/10">
-                                <p className="text-theme-dark/50 font-medium">No recent orders found.</p>
-                                <p className="text-theme-dark/40 text-sm mt-2">When you place an order, it will appear here.</p>
+                            <div className="text-center py-10 bg-theme-bg rounded-2xl border-2 border-dashed border-theme-text/20/10">
+                                <p className="text-theme-text/50 font-medium">No recent orders found.</p>
+                                <p className="text-theme-text/40 text-sm mt-2">When you place an order, it will appear here.</p>
                             </div>
                         ) : (
                             <div className="space-y-4">
                                 {orders.map(order => (
-                                    <div key={order._id} className="bg-theme-bg/50 p-6 rounded-2xl border border-theme-dark/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                                    <div key={order._id} className="bg-theme-bg/50 p-6 rounded-2xl border border-theme-text/20/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                                         <div>
-                                            <div className="text-xs text-theme-dark/50 mb-1 flex items-center gap-2">
+                                            <div className="text-xs text-theme-text/50 mb-1 flex items-center gap-2">
                                                 <Clock size={12} /> {new Date(order.createdAt).toLocaleDateString()}
                                             </div>
-                                            <h4 className="font-bold text-theme-dark font-serif text-lg">Order #{order._id.substring(order._id.length - 6).toUpperCase()}</h4>
-                                            <p className="text-sm text-theme-dark/70 mt-1">
+                                            <h4 className="font-bold text-theme-text font-serif text-lg">Order #{order._id.substring(order._id.length - 6).toUpperCase()}</h4>
+                                            <p className="text-sm text-theme-text/70 mt-1">
                                                 {order.orderItems.length} items
                                             </p>
                                         </div>
