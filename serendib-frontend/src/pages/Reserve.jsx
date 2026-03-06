@@ -11,9 +11,9 @@ const rightImages = [
 ];
 
 const ctaImages = [
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2000&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=2000&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=2000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1495474472201-419b4b0eaf95?q=80&w=2000&auto=format&fit=crop"
 ];
 
 const Reserve = () => {
@@ -161,7 +161,7 @@ const Reserve = () => {
                                     value={formData.phone}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-5 py-4 bg-[#1d1814] text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner"
+                                    className="w-full px-5 py-4 rounded-2xl  bg-[#1d1814] text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner"
                                     placeholder="(00) 98123456789"
                                 />
                             </div>
@@ -175,7 +175,7 @@ const Reserve = () => {
                                         value={formData.date}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-5 py-4 bg-[#1d1814] text-white/80 placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert cursor-pointer"
+                                        className="w-full px-5 py-4 rounded-2xl  bg-[#1d1814] text-white/80 placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert cursor-pointer"
                                     />
                                 </div>
                                 <div className="space-y-3 opacity-0 animate-fade-in-up delay-600">
@@ -186,7 +186,7 @@ const Reserve = () => {
                                         value={formData.time}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-5 py-4 bg-[#1d1814] text-white/80 placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert cursor-pointer"
+                                        className="w-full px-5 py-4 rounded-2xl  bg-[#1d1814] text-white/80 placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm border-none shadow-inner [&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert cursor-pointer"
                                     />
                                 </div>
                             </div>
@@ -198,7 +198,7 @@ const Reserve = () => {
                                     value={formData.guests}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-5 py-4 bg-[#1d1814] text-white/80 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm appearance-none cursor-pointer border-none shadow-inner"
+                                    className="w-full px-5 py-4 rounded-2xl  bg-[#1d1814] text-white/80 focus:outline-none focus:ring-1 focus:ring-[#CDA177] transition-all text-sm appearance-none cursor-pointer border-none shadow-inner"
                                 >
                                     <option value="1">1 Person</option>
                                     <option value="2">2 People</option>
@@ -213,7 +213,7 @@ const Reserve = () => {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="bg-[#CDA177] text-black px-10 py-5 text-sm font-bold uppercase tracking-widest mt-8 hover:bg-[#b88c64] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 w-[280px] shadow-lg shadow-black"
+                                    className="bg-[#CDA177] text-black px-10 py-5 rounded-2xl  text-sm font-bold uppercase tracking-widest mt-8 hover:bg-[#b88c64] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 w-[280px] shadow-lg shadow-black"
                                 >
                                     {loading ? <><Loader2 size={16} className="animate-spin" /> Processing...</> : 'Make A Reservation'}
                                 </button>
@@ -277,25 +277,25 @@ const Reserve = () => {
             </div>
 
             {/* Stay Close With Us CTA Footer Section Slideshow */}
-            <div className="relative h-[350px] lg:h-[450px] w-full mt-24 flex flex-col items-center justify-center overflow-hidden">
+            <div className="relative h-[400px] lg:h-[450px] w-full mt-24 flex flex-col items-center justify-center overflow-hidden">
                 {ctaImages.map((src, index) => (
                     <img
                         key={index}
                         src={src}
                         alt="Coffee Background Showcase"
-                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2500ms] ease-in-out ${index === ctaImageIndex ? 'opacity-40 scale-105 z-0' : 'opacity-0 scale-100 z-0'}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-[2500ms] ease-in-out ${index === ctaImageIndex ? 'opacity-25 scale-105 z-0' : 'opacity-0 scale-100 z-0'}`}
                     />
                 ))}
-                <div className="absolute inset-0 bg-[#0f0b09]/80 z-0"></div>
+                <div className="absolute inset-0 bg-[#15100d]/90 z-0"></div>
 
                 <div className="relative z-10 flex flex-col items-center text-center px-6 opacity-0 animate-fade-in-up delay-300">
-                    <h4 className="text-[#CDA177] text-[11px] font-bold tracking-[0.25em] mb-6 uppercase flex items-center gap-6">
-                        <span className="w-6 h-[1px] bg-[#CDA177]"></span> Any Question ? <span className="w-6 h-[1px] bg-[#CDA177]"></span>
+                    <h4 className="text-[#CDA177] text-[10px] font-bold tracking-[0.35em] mb-6 uppercase flex items-center justify-center gap-6">
+                        <span className="w-8 h-[1px] bg-[#CDA177]/80"></span> ANY QUESTION ? <span className="w-8 h-[1px] bg-[#CDA177]/80"></span>
                     </h4>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-white tracking-wide">Stay Close With Us</h2>
+                    <h2 className="text-5xl md:text-6xl font-bold mb-10 text-white tracking-wide">Stay Close With Us</h2>
                     <Link to="/contact">
-                        <button className="bg-[#CDA177] text-black px-12 py-5 text-xs font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
-                            Contact Us
+                        <button className="bg-[#CDA177] text-black px-10 py-4 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
+                            CONTACT US
                         </button>
                     </Link>
                 </div>
