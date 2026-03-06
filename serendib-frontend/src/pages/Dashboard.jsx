@@ -1,6 +1,6 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, User, ShoppingBag, Clock, CheckCircle } from 'lucide-react';
+import { LogOut, User, ShoppingBag, Clock, CheckCircle, CreditCard } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../utils/axiosInstance';
