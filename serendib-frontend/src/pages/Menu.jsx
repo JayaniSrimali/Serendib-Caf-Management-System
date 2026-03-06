@@ -20,8 +20,8 @@ const Menu = () => {
                     setMenuItems([
                         { _id: '1', name: "Ceylon Cinnamon Latte", description: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 5.50, category: "Coffee", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80" },
                         { _id: '2', name: "Serendib Mocha", description: "Dark chocolate meets our signature dark roast.", price: 6.00, category: "Coffee", image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&q=80" },
-                        { _id: '3', name: "Kithul Treacle Cake", description: "Moist cake sweetened with natural Kithul treacle.", price: 7.00, category: "Dessert", image: "https://images.unsplash.com/photo-1557365362-e6e729a73e44?w=400&q=80" },
-                        { _id: '4', name: "Organic Iced Coffee", description: "Cold brewed overnight for a perfectly smooth finish.", price: 4.50, category: "Cold Beverage", image: "https://images.unsplash.com/photo-1461023058943-07cb14c97940?w=400&q=80" },
+                        { _id: '3', name: "Kithul Treacle Cake", description: "Moist cake sweetened with natural Kithul treacle.", price: 7.00, category: "Dessert", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" },
+                        { _id: '4', name: "Organic Iced Coffee", description: "Cold brewed overnight for a perfectly smooth finish.", price: 4.50, category: "Cold Beverage", image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=80" },
                         { _id: '5', name: "Spicy Chicken Pastry", description: "Flaky crust packed with savory roasted chicken.", price: 4.00, category: "Savory", image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=400&q=80" },
                         { _id: '6', name: "Classic Cappuccino", description: "Perfect balance of espresso, steamed milk and foam.", price: 5.00, category: "Coffee", image: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&q=80" },
                     ]);
