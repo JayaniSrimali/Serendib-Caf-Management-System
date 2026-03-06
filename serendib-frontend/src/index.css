@@ -6,6 +6,37 @@
 
 @layer base {
   body {
-    @apply font-sans bg-theme-bg text-theme-text;
+    @apply font-sans bg-[#130f0c] text-white;
   }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #130f0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #231d17;
+  border-radius: 10px;
+  border: 2px solid #130f0c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CDA177;
 }
