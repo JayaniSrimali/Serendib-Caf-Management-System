@@ -32,8 +32,8 @@ const Register = () => {
         e.preventDefault();
         try {
             await register(formData.name, formData.email, formData.password);
-            toast.success('Account created successfully! Please login.');
-            navigate('/login');
+            toast.success('Account created successfully!');
+            navigate('/');
         } catch (error) {
             toast.error(error.message || 'Registration failed');
         }
@@ -42,10 +42,7 @@ const Register = () => {
     return (
         <div className="w-full min-h-screen relative flex font-sans overflow-hidden bg-[#F2E8DF] items-center justify-center p-4 sm:p-6 selection:bg-theme-accent selection:text-white">
 
-            {/* Vertical Text (Sign Up) */}
-            <div className="absolute left-2 sm:left-6 lg:left-12 xl:left-20 top-1/2 -translate-y-1/2 -rotate-90 origin-bottom-left hidden sm:block z-20">
-                <span className="text-black/90 text-[36px] xl:text-[44px] tracking-wider font-sans font-medium whitespace-nowrap">Sign Up</span>
-            </div>
+
 
             <div className="w-full max-w-[900px] h-auto md:h-[600px] bg-theme-card rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden relative z-10 border-0">
 

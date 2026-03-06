@@ -18,7 +18,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (userInfo) navigate('/dashboard');
+        if (userInfo) navigate('/');
 
         const timer = setInterval(() => {
             setCurrentImage((prev) => (prev + 1) % images.length);
@@ -42,10 +42,7 @@ const Login = () => {
     return (
         <div className="w-full min-h-screen relative flex font-sans overflow-hidden bg-[#F2E8DF] items-center justify-center p-4 sm:p-6 selection:bg-theme-accent selection:text-white">
 
-            {/* Vertical Text (Login) */}
-            <div className="absolute right-2 sm:right-6 lg:right-16 xl:right-24 top-1/2 -translate-y-1/2 -rotate-90 origin-bottom-right hidden sm:block">
-                <span className="text-black/90 text-[36px] xl:text-[44px] tracking-wider font-sans font-medium whitespace-nowrap uppercase">Login</span>
-            </div>
+
 
             <div className="w-full max-w-[900px] h-auto md:h-[600px] bg-theme-card rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden relative z-10 border-0">
 
