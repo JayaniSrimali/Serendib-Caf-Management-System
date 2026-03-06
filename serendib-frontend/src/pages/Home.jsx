@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ShoppingBag, Star, CheckCircle2, ChevronRight, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import toast from 'react-hot-toast';
 
 const Home = () => {
+    const { addToCart } = useCart();
     return (
         <div className="w-full bg-[#130f0c] text-white font-sans selection:bg-[#CDA177] selection:text-black">
 
@@ -173,10 +176,10 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                         {[
-                            { name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, discountPrice: 950.00, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: 1400.00, img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: 1200.00, discountPrice: 1000.00, img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: 950.00, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" },
+                            { _id: 'f1', name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, discountPrice: 950.00, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
+                            { _id: 'f2', name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: 1400.00, img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
+                            { _id: 'f3', name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: 1200.00, discountPrice: 1000.00, img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" },
+                            { _id: 'f4', name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: 950.00, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" },
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
@@ -207,7 +210,13 @@ const Home = () => {
                                         )}
                                     </div>
                                     <p className="text-[#a09c99] text-[13px] mb-8 flex-grow leading-[1.8]">{item.desc}</p>
-                                    <button className="w-full bg-transparent text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#CDA177] hover:text-black transition-colors flex items-center justify-center gap-3 border border-[#CDA177]/40">
+                                    <button
+                                        onClick={() => {
+                                            addToCart({ ...item, image: item.img });
+                                            toast.success(`${item.name} added to cart!`);
+                                        }}
+                                        className="w-full bg-transparent text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#CDA177] hover:text-black transition-colors flex items-center justify-center gap-3 border border-[#CDA177]/40"
+                                    >
                                         <ShoppingBag size={14} /> Add to Cart
                                     </button>
                                 </div>
