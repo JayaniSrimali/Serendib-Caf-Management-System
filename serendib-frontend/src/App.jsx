@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
       </div>
 
       {/* Main Navigation */}
-      <header className="w-full bg-theme-bg/95 backdrop-blur-md sticky top-0 z-40 border-b border-theme-text/20/10 shadow-none border border-white/5">
+      <header className="w-full bg-theme-bg/95 backdrop-blur-md sticky top-0 z-40 border-b border-theme-text/20/10 shadow-sm border border-black/5">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
 
           {/* Logo */}
@@ -106,7 +106,7 @@ const Layout = ({ children }) => {
         <div className="max-w-[1400px] mx-auto">
 
           {/* Top Section with Decorative Elements (Optional, based on image inspiration) */}
-          <div className="flex flex-col md:flex-row items-center justify-between border-b border-white/10 pb-16 mb-16 gap-10">
+          <div className="flex flex-col md:flex-row items-center justify-between border-b border-black/5 pb-16 mb-16 gap-10">
             <div className="max-w-xl text-center md:text-left">
               <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 italic">Experience the art of Ceylon coffee</h3>
               <p className="text-sm md:text-base text-theme-textMuted/70 leading-relaxed">
@@ -116,7 +116,7 @@ const Layout = ({ children }) => {
 
             {/* Newsletter Subscription */}
             <div className="w-full max-w-md">
-              <div className="flex bg-white/5 border border-white/10 p-1.5 rounded-full focus-within:border-theme-accent transition-all">
+              <div className="flex bg-white/5 border border-black/5 p-1.5 rounded-full focus-within:border-theme-accent transition-all">
                 <input
                   type="email"
                   placeholder="Your email address"
@@ -143,13 +143,13 @@ const Layout = ({ children }) => {
                 Crafting authentic Sri Lankan coffee experiences since 1998. Every bean tells a story of our heritage and dedication to the perfect brew.
               </p>
               <div className="flex gap-4">
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Facebook size={18} />
                 </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Twitter size={18} />
                 </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Instagram size={18} />
                 </div>
               </div>
@@ -210,11 +210,11 @@ const Layout = ({ children }) => {
 
           </div>
 
-          <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="mt-20 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-xs font-bold text-theme-textMuted/40 tracking-[0.1em] uppercase">
               © {new Date().getFullYear()} Café Serendib — All Rights Reserved.
             </p>
-            <div className="flex bg-white/5 px-6 py-2 rounded-full border border-white/10">
+            <div className="flex bg-white/5 px-6 py-2 rounded-full border border-black/5">
               <span className="text-[10px] font-bold text-theme-textMuted/50 uppercase tracking-widest flex items-center gap-3">
                 Managed by <span className="text-theme-accent">Jayani Srimali</span>
               </span>

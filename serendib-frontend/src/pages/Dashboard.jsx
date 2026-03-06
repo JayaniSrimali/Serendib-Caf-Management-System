@@ -55,7 +55,7 @@ const Dashboard = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Profile Panel */}
-                    <div className="bg-theme-card p-8 rounded-[32px] shadow-none border border-white/5 border border-theme-text/20/5 self-start">
+                    <div className="bg-theme-card p-8 rounded-[32px] shadow-sm border border-black/5 border border-theme-text/20/5 self-start">
                         <div className="w-16 h-16 bg-theme-bg rounded-full flex items-center justify-center text-theme-accent mb-6">
                             <User size={32} />
                         </div>
@@ -71,7 +71,7 @@ const Dashboard = () => {
                     </div>
 
                     {/* Orders Panel */}
-                    <div className="bg-theme-card p-8 rounded-[32px] shadow-none border border-white/5 border border-theme-text/20/5 lg:col-span-2">
+                    <div className="bg-theme-card p-8 rounded-[32px] shadow-sm border border-black/5 border border-theme-text/20/5 lg:col-span-2">
                         <h3 className="text-2xl font-serif font-bold text-theme-text mb-6 flex items-center gap-3">
                             <ShoppingBag className="text-theme-accent" /> Recent Orders
                         </h3>

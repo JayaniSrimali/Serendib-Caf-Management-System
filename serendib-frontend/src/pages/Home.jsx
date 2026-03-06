@@ -104,7 +104,7 @@ const Home = () => {
             {/* 2. ABOUT PREVIEW SECTION */}
             <section className="w-full bg-theme-bg py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto">
-                    <div className="bg-theme-card rounded-[40px] shadow-none border border-white/5 p-10 md:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-16 relative overflow-hidden">
+                    <div className="bg-theme-card rounded-[40px] shadow-sm border border-black/5 p-10 md:p-16 lg:p-20 flex flex-col lg:flex-row items-center justify-between gap-16 relative overflow-hidden">
                         {/* Abstract shapes inside the white card */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-theme-bg rounded-bl-full opacity-60"></div>
 
@@ -139,7 +139,7 @@ const Home = () => {
             </section>
 
             {/* 3. FEATURED MENU SECTION */}
-            <section className="w-full bg-[#EADDCD] py-24 px-6 md:px-12">
+            <section className="w-full bg-white py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h4 className="text-theme-text/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Taste The Best</h4>
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-6">Our Signature Favorites</h2>
@@ -154,7 +154,7 @@ const Home = () => {
                             { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: "Rs. 1200.00", img: "https://images.unsplash.com/photo-1557365362-e6e729a73e44?auto=format&fit=crop&w=400&q=80" },
                             { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: "Rs. 950.00", img: "https://images.unsplash.com/photo-1461023058943-07cb14c97940?auto=format&fit=crop&w=400&q=80" },
                         ].map((item, idx) => (
-                            <div key={idx} className="bg-theme-bg rounded-[24px] p-5 shadow-none border border-white/5 hover:shadow-xl transition-shadow group flex flex-col h-full">
+                            <div key={idx} className="bg-theme-bg rounded-[24px] p-5 shadow-sm border border-black/5 hover:shadow-xl transition-shadow group flex flex-col h-full">
                                 <div className="rounded-[16px] overflow-hidden mb-6 h-56">
                                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                 </div>
@@ -195,7 +195,7 @@ const Home = () => {
                                 "Cozy & Relaxing Atmosphere",
                                 "Friendly Service"
                             ].map((point, i) => (
-                                <div key={i} className="flex items-center gap-4 bg-theme-card p-5 rounded-2xl shadow-none border border-white/5 border border-transparent hover:border-theme-accent/30 transition-colors">
+                                <div key={i} className="flex items-center gap-4 bg-theme-card p-5 rounded-2xl shadow-sm border border-black/5 border border-transparent hover:border-theme-accent/30 transition-colors">
                                     <div className="bg-theme-bg p-3 rounded-full text-theme-accent">
                                         <CheckCircle2 size={24} />
                                     </div>
@@ -211,7 +211,7 @@ const Home = () => {
             <section className="w-full bg-theme-bg pb-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto">
                     {/* The long rectangular image banner style from the reference */}
-                    <div className="relative w-full rounded-[40px] overflow-hidden flex flex-col md:flex-row bg-[#D3B497] items-stretch shadow-xl min-h-[300px]">
+                    <div className="relative w-full rounded-[40px] overflow-hidden flex flex-col md:flex-row bg-theme-accent/5 items-stretch shadow-xl min-h-[300px]">
 
                         {/* Image area */}
                         <div className="md:w-1/2 h-64 md:h-auto overflow-hidden relative">
@@ -239,7 +239,7 @@ const Home = () => {
             </section>
 
             {/* 6. CUSTOMER TESTIMONIALS */}
-            <section className="w-full bg-[#EADDCD] py-24 px-6 md:px-12">
+            <section className="w-full bg-white py-24 px-6 md:px-12">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <h4 className="text-theme-text/50 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Reviews</h4>
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-text mb-16">What Our Guests Say</h2>
@@ -250,7 +250,7 @@ const Home = () => {
                             { name: "Nuwan D.", role: "Food Critic", rating: 5, review: "A perfect blend of modern café aesthetics and local flavors. The Kithul cake is an absolute masterpiece and a must-try!" },
                             { name: "Emily R.", role: "Regular Customer", rating: 4, review: "My new favorite spot to work and relax. Fast wifi, great seating, and the Ceylon latte is out of this world." }
                         ].map((testi, i) => (
-                            <div key={i} className="bg-theme-bg p-8 lg:p-10 rounded-[30px] shadow-none border border-white/5 relative pt-12">
+                            <div key={i} className="bg-theme-bg p-8 lg:p-10 rounded-[30px] shadow-sm border border-black/5 relative pt-12">
                                 <div className="absolute top-0 right-10 transform -translate-y-1/2 bg-theme-accent text-white p-3 rounded-full shadow-lg">
                                     <Quote size={24} className="fill-current" />
                                 </div>

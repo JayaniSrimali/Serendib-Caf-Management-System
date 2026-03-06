@@ -12,7 +12,7 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center gap-16 mb-24 bg-theme-card rounded-[40px] p-8 md:p-16 shadow-none border border-white/5 overflow-hidden relative">
+                <div className="flex flex-col lg:flex-row items-center gap-16 mb-24 bg-theme-card rounded-[40px] p-8 md:p-16 shadow-sm border border-black/5 overflow-hidden relative">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-theme-bg rounded-bl-full opacity-60"></div>
                     <div className="lg:w-1/2 relative z-10 space-y-6">
                         <h3 className="text-3xl font-serif font-bold text-theme-text">The Heart of Ceylon</h3>

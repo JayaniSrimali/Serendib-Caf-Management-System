@@ -64,7 +64,7 @@ const Contact = () => {
                     <div className="lg:w-1/3 flex flex-col gap-6">
 
                         {/* Location Card */}
-                        <div className="bg-theme-card p-10 rounded-[40px] shadow-none border border-white/5 border border-theme-text/20/5 group hover:shadow-xl transition-all duration-500">
+                        <div className="bg-theme-card p-10 rounded-[40px] shadow-sm border border-black/5 border border-theme-text/20/5 group hover:shadow-xl transition-all duration-500">
                             <div className="w-14 h-14 bg-theme-bg rounded-2xl flex items-center justify-center text-theme-accent mb-8 group-hover:scale-110 transition-transform duration-500 bg-theme-card">
                                 <MapPin size={28} />
                             </div>
@@ -78,7 +78,7 @@ const Contact = () => {
                         </div>
 
                         {/* Quick Contact Card */}
-                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-none border border-white/5 text-white relative overflow-hidden group">
+                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-sm border border-black/5 text-white relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-theme-accent/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
                             <h3 className="text-2xl font-serif font-bold mb-8 relative z-10">Quick Support</h3>
@@ -114,7 +114,7 @@ const Contact = () => {
                         </div>
 
                         {/* Opening Hours Card */}
-                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-none border border-white/5 text-white group">
+                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-sm border border-black/5 text-white group">
                             <h3 className="text-2xl font-serif font-bold mb-8 flex items-center gap-3">
                                 <Clock size={24} /> Opening Hours
                             </h3>
@@ -136,7 +136,7 @@ const Contact = () => {
                     </div>
 
                     {/* Right Side: Contact Form Section */}
-                    <div className="lg:w-2/3 bg-theme-card p-10 md:p-16 rounded-[40px] shadow-none border border-white/5 border border-theme-text/20/5">
+                    <div className="lg:w-2/3 bg-theme-card p-10 md:p-16 rounded-[40px] shadow-sm border border-black/5 border border-theme-text/20/5">
                         <div className="mb-12">
                             <h2 className="text-4xl font-serif font-bold text-theme-text mb-4">Send us a message</h2>
                             <p className="text-theme-text/60 font-medium leading-relaxed max-w-xl">

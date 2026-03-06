@@ -63,7 +63,7 @@ const Menu = () => {
                             <button
                                 key={i}
                                 onClick={() => setFilter(cat)}
-                                className={`px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${filter === cat ? 'bg-theme-accent text-white' : 'bg-theme-card text-theme-text shadow-none border border-white/5 hover:bg-theme-accent/10'}`}
+                                className={`px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${filter === cat ? 'bg-theme-accent text-white' : 'bg-theme-card text-theme-text shadow-sm border border-black/5 hover:bg-theme-accent/10'}`}
                             >
                                 {cat}
                             </button>
@@ -76,7 +76,7 @@ const Menu = () => {
                             placeholder="Search menu..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-12 pr-4 py-3 rounded-full bg-theme-card border-2 border-transparent focus:border-theme-accent/50 outline-none shadow-none border border-white/5 text-sm"
+                            className="w-full pl-12 pr-4 py-3 rounded-full bg-theme-card border-2 border-transparent focus:border-theme-accent/50 outline-none shadow-sm border border-black/5 text-sm"
                         />
                         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-theme-text/40" size={18} />
                     </div>
@@ -88,7 +88,7 @@ const Menu = () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {filteredItems.map(item => (
-                            <div key={item._id} className="bg-theme-card rounded-[24px] p-5 shadow-none border border-white/5 hover:shadow-xl transition-shadow group flex flex-col h-full border border-theme-text/20/5">
+                            <div key={item._id} className="bg-theme-card rounded-[24px] p-5 shadow-sm border border-black/5 hover:shadow-xl transition-shadow group flex flex-col h-full border border-theme-text/20/5">
                                 <div className="rounded-[16px] overflow-hidden mb-6 h-56 relative">
                                     <img src={item.image || 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80'} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                     <div className="absolute top-3 right-3 bg-theme-dark/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-theme-text">

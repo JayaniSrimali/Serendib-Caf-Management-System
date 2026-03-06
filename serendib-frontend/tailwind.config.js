@@ -8,13 +8,13 @@ export default {
         extend: {
             colors: {
                 theme: {
-                    bg: '#0F0B09', // Deepest black-brown background
-                    dark: '#1C130E', // Slightly lighter dark brown for contrasting sections
-                    card: '#1F1511', // Card background (almost black brown)
-                    text: '#EAE0D5', // Light cream color for main text
-                    textMuted: '#A8998C', // Muted text color for secondary info
-                    accent: '#D49A6A', // Bright Caramel for primary actions
-                    accentDark: '#A6734A', // Darker Caramel for hover states
+                    bg: '#FDFBF7', // Clean professional light cream
+                    dark: '#000000', // Pure Black for high-end contrast
+                    card: '#FFFFFF', // Pure White for UI cards
+                    text: '#1A1A1A', // Deep Charcoal/Black for primary text
+                    textMuted: '#6B5E54', // Warm Earthy Brown for secondary text
+                    accent: '#8B5E3C', // Professional Rich Roasted Coffee Brown
+                    accentDark: '#5E3C25', // Deep Dark Brown
                 }
             },
             fontFamily: {

@@ -10,6 +10,7 @@ const itemsLKR = [
     { name: "Ceylon Cinnamon Latte", description: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, category: "Coffee", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80" },
     { name: "Serendib Mocha", description: "Dark chocolate meets our signature dark roast.", price: 1400.00, category: "Coffee", image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&q=80" },
 
+    
     // --- Teas ---
     { name: "Earl Grey Reserve", description: "A robust black tea with rich notes of bergamot citrus and a hint of lavender.", price: 800.00, category: "Tea", image: "https://images.unsplash.com/photo-1596450514735-8025e11addac?w=400&q=80" },
     { name: "Spiced Chai Latte", description: "Black tea infused with cinnamon, clove and other warming spices is combined with steamed milk.", price: 1100.00, category: "Tea", image: "https://images.unsplash.com/photo-1576092055620-337583ee3abf?w=400&q=80" },

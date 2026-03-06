@@ -45,7 +45,7 @@ const Cart = () => {
     if (cartItems.length === 0) {
         return (
             <div className="w-full min-h-screen bg-theme-bg flex flex-col items-center justify-center py-20 px-6 text-center">
-                <div className="w-32 h-32 bg-theme-card rounded-full flex items-center justify-center shadow-none border border-white/5 mb-6 text-theme-text/20">
+                <div className="w-32 h-32 bg-theme-card rounded-full flex items-center justify-center shadow-sm border border-black/5 mb-6 text-theme-text/20">
                     <ShoppingBag size={64} />
                 </div>
                 <h2 className="text-3xl font-serif font-bold text-theme-text mb-4">Your cart is empty</h2>
@@ -64,7 +64,7 @@ const Cart = () => {
 
                 <div className="flex flex-col lg:flex-row gap-12">
                     {/* Cart Items */}
-                    <div className="lg:w-2/3 bg-theme-card rounded-[32px] shadow-none border border-white/5 p-6 md:p-10 border border-theme-text/20/5">
+                    <div className="lg:w-2/3 bg-theme-card rounded-[32px] shadow-sm border border-black/5 p-6 md:p-10 border border-theme-text/20/5">
                         <div className="space-y-8">
                             {cartItems.map((item) => (
                                 <div key={item._id} className="flex flex-col sm:flex-row items-center gap-6 pb-8 border-b border-theme-text/20/10 last:border-0 last:pb-0">
