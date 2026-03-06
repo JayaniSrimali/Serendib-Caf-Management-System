@@ -78,7 +78,7 @@ const Contact = () => {
                         </div>
 
                         {/* Quick Contact Card */}
-                        <div className="bg-[#9E6B44] p-10 rounded-[40px] shadow-sm border border-[#9E6B44]/20 text-white relative overflow-hidden group">
+                        <div className="bg-[#947062] p-10 rounded-[40px] shadow-sm border border-[#947062]/20 text-white relative overflow-hidden group">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
                             <h3 className="text-2xl font-serif font-bold mb-8 relative z-10">Quick Support</h3>
@@ -114,7 +114,7 @@ const Contact = () => {
                         </div>
 
                         {/* Opening Hours Card */}
-                        <div className="bg-[#BA8454] p-10 rounded-[40px] shadow-sm border border-black/5 text-white group">
+                        <div className="bg-[#947062] p-10 rounded-[40px] shadow-sm border border-[#947062]/20 text-white group">
                             <h3 className="text-2xl font-serif font-bold mb-8 flex items-center gap-3">
                                 <Clock size={24} /> Opening Hours
                             </h3>
@@ -154,7 +154,7 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium"
+                                        className="w-full px-6 py-4 rounded-2xl bg-[#1F1511] border border-white/10 focus:border-theme-accent focus:bg-[#1F1511] focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-[#E8DCC4] font-medium placeholder:text-[#E8DCC4]/40 shadow-inner"
                                         placeholder="John Doe"
                                     />
                                 </div>
@@ -166,7 +166,7 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium"
+                                        className="w-full px-6 py-4 rounded-2xl bg-[#1F1511] border border-white/10 focus:border-theme-accent focus:bg-[#1F1511] focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-[#E8DCC4] font-medium placeholder:text-[#E8DCC4]/40 shadow-inner"
                                         placeholder="john@example.com"
                                     />
                                 </div>
@@ -178,7 +178,7 @@ const Contact = () => {
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium appearance-none cursor-pointer"
+                                    className="w-full px-6 py-4 rounded-2xl bg-[#1F1511] border border-white/10 focus:border-theme-accent focus:bg-[#1F1511] focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-[#E8DCC4] font-medium appearance-none cursor-pointer shadow-inner"
                                 >
                                     <option value="General Inquiry">General Inquiry</option>
                                     <option value="Reservation Question">Reservation Question</option>
@@ -196,7 +196,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     rows="6"
                                     required
-                                    className="w-full px-6 py-4 rounded-2xl bg-theme-bg border border-theme-text/20/10 focus:border-theme-accent focus:bg-theme-card focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-theme-text font-medium resize-none"
+                                    className="w-full px-6 py-4 rounded-2xl bg-[#1F1511] border border-white/10 focus:border-theme-accent focus:bg-[#1F1511] focus:ring-4 focus:ring-theme-accent/5 outline-none transition-all text-[#E8DCC4] font-medium resize-none placeholder:text-[#E8DCC4]/40 shadow-inner"
                                     placeholder="Write your message here..."
                                 ></textarea>
                             </div>
@@ -204,7 +204,7 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="bg-[#9E6B44] text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-[#7D5333] disabled:bg-[#9E6B44]/50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#9E6B44]/20"
+                                className="bg-[#947062] text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-[#7A5B4F] disabled:bg-[#947062]/50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#947062]/20"
                             >
                                 {loading ? (
                                     <>
