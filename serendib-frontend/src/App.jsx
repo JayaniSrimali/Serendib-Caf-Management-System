@@ -32,9 +32,9 @@ const Layout = ({ children }) => {
     <div className="bg-theme-bg min-h-screen font-sans text-theme-text flex flex-col overflow-x-hidden selection:bg-theme-accent selection:text-white">
 
       {/* Top Bar */}
-      <div className="bg-theme-dark text-theme-textMuted text-xs py-2 px-6 md:px-12 flex justify-between items-center z-50 relative">
+      <div className="bg-[#2C1E16] text-[#E8DCC4] text-xs py-2 px-6 md:px-12 flex justify-between items-center z-50 relative border-b border-white/5">
         <div className="flex gap-6 max-w-[1400px] mx-auto w-full justify-between items-center">
-          <p className="hidden md:block">Welcome to Café Serendib — The True Taste of Ceylon</p>
+          <p className="hidden md:block text-[#E8DCC4]/80">Welcome to Café Serendib — The True Taste of Ceylon</p>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2"><Phone size={14} /> +94 11 234 5678</div>
             <div className="flex gap-3">
@@ -47,30 +47,30 @@ const Layout = ({ children }) => {
       </div>
 
       {/* Main Navigation */}
-      <header className="w-full bg-theme-bg/95 backdrop-blur-md sticky top-0 z-40 border-b border-theme-text/20/10 shadow-sm border border-black/5">
+      <header className="w-full bg-[#2C1E16] sticky top-0 z-40 shadow-lg border-b border-white/5 relative">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[45px] h-[45px] object-cover rounded-full shadow-md bg-theme-dark p-0.5 border-2 border-theme-accent" />
-            <span className="text-2xl font-serif font-bold text-theme-text tracking-wide">
+            <img src="/assets/logo.png" alt="Café Serendib Logo" className="w-[45px] h-[45px] object-cover rounded-full shadow-md bg-[#E8DCC4] p-0.5 border-2 border-theme-accent" />
+            <span className="text-2xl font-serif font-bold text-white tracking-wide drop-shadow-sm">
               Café Serendib
             </span>
           </Link>
 
           {/* Middle Links */}
           <nav className="hidden lg:flex items-center gap-10 font-medium text-[15px]">
-            <Link to="/" className="text-theme-text hover:text-theme-accent transition-colors">Home</Link>
-            <Link to="/about" className="text-theme-text hover:text-theme-accent transition-colors">Our Story</Link>
-            <Link to="/menu" className="text-theme-text hover:text-theme-accent transition-colors">Menu</Link>
-            <Link to="/contact" className="text-theme-text hover:text-theme-accent transition-colors">Contact</Link>
+            <Link to="/" className="text-[#E8DCC4]/80 hover:text-white transition-colors">Home</Link>
+            <Link to="/about" className="text-[#E8DCC4]/80 hover:text-white transition-colors">Our Story</Link>
+            <Link to="/menu" className="text-[#E8DCC4]/80 hover:text-white transition-colors">Menu</Link>
+            <Link to="/contact" className="text-[#E8DCC4]/80 hover:text-white transition-colors">Contact</Link>
           </nav>
 
           {/* Right Icons / CTA */}
           <div className="flex items-center gap-6">
-            <button className="hidden sm:block text-theme-text hover:text-theme-accent transition-colors"><Search size={22} /></button>
+            <button className="hidden sm:block text-[#E8DCC4]/80 hover:text-white transition-colors"><Search size={22} /></button>
 
-            <Link to="/cart" className="relative text-theme-text hover:text-theme-accent transition-colors hidden sm:block">
+            <Link to="/cart" className="relative text-[#E8DCC4]/80 hover:text-white transition-colors hidden sm:block">
               <ShoppingBag size={22} />
               {cartItems?.length > 0 && (
                 <span className="absolute -top-1.5 -right-2 bg-theme-accent text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -80,16 +80,16 @@ const Layout = ({ children }) => {
             </Link>
 
             {userInfo ? (
-              <Link to="/dashboard" className="hidden border-2 border-theme-text/20 text-theme-text px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
+              <Link to="/dashboard" className="hidden border border-[#E8DCC4]/20 text-[#E8DCC4] px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#E8DCC4] hover:text-[#2C1E16] transition-all md:block">
                 Dashboard
               </Link>
             ) : (
-              <Link to="/login" className="hidden border-2 border-theme-text/20 text-theme-text px-4 py-2 rounded-full text-xs font-semibold hover:bg-theme-dark hover:text-white transition-all md:block">
+              <Link to="/login" className="hidden border border-[#E8DCC4]/20 text-[#E8DCC4] px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#E8DCC4] hover:text-[#2C1E16] transition-all md:block">
                 Log In
               </Link>
             )}
 
-            <Link to="/reserve" className="bg-theme-dark text-theme-bg px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-theme-accent transition-all hidden md:block">
+            <Link to="/reserve" className="bg-theme-accent text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-white hover:text-[#2C1E16] transition-all hidden md:block">
               Reserve a Table
             </Link>
           </div>
@@ -102,7 +102,7 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Footer (Premium Dark Design) */}
-      <footer className="w-full bg-theme-dark text-theme-textMuted pt-24 pb-12 mt-auto px-6 md:px-12 selection:bg-theme-accent selection:text-white">
+      <footer className="w-full bg-[#2C1E16] text-[#D8C9BB] pt-24 pb-12 mt-auto px-6 md:px-12 selection:bg-theme-accent selection:text-white border-t border-black/5">
         <div className="max-w-[1400px] mx-auto">
 
           {/* Top Section with Decorative Elements (Optional, based on image inspiration) */}

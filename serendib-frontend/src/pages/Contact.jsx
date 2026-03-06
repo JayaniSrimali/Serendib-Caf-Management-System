@@ -36,7 +36,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="w-full bg-theme-bg min-h-screen">
+        <div className="w-full bg-[#F2E8DF] min-h-screen">
 
             {/* Hero Section */}
             <div className="relative h-[450px] w-full overflow-hidden flex items-center justify-center">
@@ -78,35 +78,35 @@ const Contact = () => {
                         </div>
 
                         {/* Quick Contact Card */}
-                        <div className="bg-theme-dark p-10 rounded-[40px] shadow-sm border border-black/5 text-white relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-theme-accent/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                        <div className="bg-[#9E6B44] p-10 rounded-[40px] shadow-sm border border-[#9E6B44]/20 text-white relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
                             <h3 className="text-2xl font-serif font-bold mb-8 relative z-10">Quick Support</h3>
                             <div className="space-y-6 relative z-10">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white">
                                         <Phone size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Call Us</p>
+                                        <p className="text-white/70 text-xs font-bold uppercase tracking-wider mb-1">Call Us</p>
                                         <p className="font-bold text-sm">+94 11 234 5678</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white">
                                         <Mail size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Email Us</p>
+                                        <p className="text-white/70 text-xs font-bold uppercase tracking-wider mb-1">Email Us</p>
                                         <p className="font-bold text-sm">hello@cafeserendib.lk</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-theme-accent">
+                                    <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-white">
                                         <Globe size={20} />
                                     </div>
                                     <div>
-                                        <p className="text-white/40 text-xs font-bold uppercase tracking-wider mb-1">Website</p>
+                                        <p className="text-white/70 text-xs font-bold uppercase tracking-wider mb-1">Website</p>
                                         <p className="font-bold text-sm">www.cafeserendib.lk</p>
                                     </div>
                                 </div>
@@ -204,7 +204,7 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="bg-theme-dark text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-theme-accent disabled:bg-theme-dark/50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-theme-dark/10"
+                                className="bg-[#9E6B44] text-white px-10 py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-[#7D5333] disabled:bg-[#9E6B44]/50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#9E6B44]/20"
                             >
                                 {loading ? (
                                     <>
