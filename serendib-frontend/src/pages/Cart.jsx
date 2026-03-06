@@ -1,6 +1,6 @@
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { Trash2, Plus, Minus, CreditCard, ShoppingBag, ArrowRight, Ticket, CheckCircle2, Truck, Store, MapPin, Wallet } from 'lucide-react';
+import { Trash2, Plus, Minus, CreditCard, ShoppingBag, ArrowRight, Ticket, CheckCircle2, Truck, Store, MapPin, Wallet, X, Lock } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import toast from 'react-hot-toast';
@@ -17,6 +17,10 @@ const Cart = () => {
     const [orderType, setOrderType] = useState('pickup'); // 'pickup' or 'delivery'
     const [paymentMethod, setPaymentMethod] = useState('cash'); // 'cash' or 'online'
     const [address, setAddress] = useState('');
+
+    // Payment Modal State
+    const [showPaymentModal, setShowPaymentModal] = useState(false);
+    const [cardDetails, setCardDetails] = useState({ number: '', expiry: '', cvv: '', name: '' });
 
     // Promo Code states
     const [promoInput, setPromoInput] = useState('');
@@ -43,7 +47,7 @@ const Cart = () => {
     const deliveryFee = orderType === 'delivery' ? 250 : 0;
     const finalTotal = subtotal + tax + deliveryFee - discountAmount;
 
-    const handleCheckout = async () => {
+    const handleCheckoutInitiate = () => {
         if (!userInfo) {
             toast.error('Please login to checkout');
             navigate('/login?redirect=/cart');
@@ -55,6 +59,14 @@ const Cart = () => {
             return;
         }
 
+        if (paymentMethod === 'online') {
+            setShowPaymentModal(true);
+        } else {
+            handleFinalOrder();
+        }
+    };
+
+    const handleFinalOrder = async () => {
         setLoading(true);
         try {
             const orderData = {
@@ -74,6 +86,7 @@ const Cart = () => {
             await axiosInstance.post('/orders', orderData);
             clearCart();
             toast.success(paymentMethod === 'online' ? 'Payment processed & Order placed!' : 'Order confirmed! Pay on collection.');
+            setShowPaymentModal(false);
             navigate('/dashboard');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to place order');
@@ -269,7 +282,7 @@ const Cart = () => {
                                 <input
                                     type="text"
                                     value={promoInput}
-                                    onChange={(e) => setPromoInput(e.target.value)}
+                                    onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
                                     placeholder="PROMO CODE"
                                     className="w-full bg-black/20 border border-[#CDA177]/10 rounded-full py-4 pl-6 pr-24 text-xs font-bold tracking-[0.2em] outline-none focus:border-[#CDA177]/40"
                                 />
@@ -282,7 +295,7 @@ const Cart = () => {
                             </div>
 
                             <button
-                                onClick={handleCheckout}
+                                onClick={handleCheckoutInitiate}
                                 disabled={loading}
                                 className="w-full bg-[#CDA177] text-black py-6 rounded-full font-black tracking-[0.3em] text-[12px] uppercase hover:bg-white transition-all flex items-center justify-center gap-4 group disabled:opacity-50"
                             >
@@ -297,6 +310,119 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Payment Modal */}
+            <AnimatePresence>
+                {showPaymentModal && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-12">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowPaymentModal(false)}
+                            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+                        />
+
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            className="relative w-full max-w-[500px] bg-[#1a1511] border border-[#CDA177]/20 rounded-[40px] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden"
+                        >
+                            {/* Header */}
+                            <div className="p-8 border-b border-[#CDA177]/10 flex justify-between items-center relative z-10">
+                                <div>
+                                    <h3 className="text-2xl font-serif font-bold text-white mb-1">Secure Payment</h3>
+                                    <p className="text-[#a09c99] text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                                        <Lock size={12} className="text-[#CDA177]" /> 256-bit SSL encryption
+                                    </p>
+                                </div>
+                                <button onClick={() => setShowPaymentModal(false)} className="text-[#a09c99] hover:text-white transition-colors">
+                                    <X size={24} />
+                                </button>
+                            </div>
+
+                            {/* Form */}
+                            <div className="p-8 lg:p-10 space-y-6">
+                                {/* Card Visualization */}
+                                <div className="w-full aspect-[1.7/1] bg-gradient-to-br from-[#CDA177] via-[#b88c64] to-[#8a684a] rounded-3xl p-8 relative overflow-hidden shadow-2xl mb-10">
+                                    <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20"></div>
+                                    <div className="flex justify-between items-start mb-12">
+                                        <div className="w-12 h-12 bg-[#130f0c]/20 rounded-lg backdrop-blur-sm flex items-center justify-center">
+                                            <CreditCard className="text-white/80" />
+                                        </div>
+                                        <div className="text-[10px] font-black text-white/40 tracking-[0.35em] uppercase">Café Serendib</div>
+                                    </div>
+                                    <div className="text-white font-mono text-xl tracking-[0.2em] mb-8">
+                                        {cardDetails.number || '•••• •••• •••• ••••'}
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <div>
+                                            <p className="text-[8px] uppercase text-white/50 mb-1">Card Holder</p>
+                                            <p className="text-xs font-bold text-white uppercase tracking-widest">{cardDetails.name || 'Your Name'}</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-[8px] uppercase text-white/50 mb-1">Expires</p>
+                                            <p className="text-xs font-bold text-white tracking-widest">{cardDetails.expiry || 'MM/YY'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <input
+                                        type="text"
+                                        placeholder="Full Name on Card"
+                                        className="w-full bg-black/40 border border-[#CDA177]/10 rounded-2xl px-6 py-4 text-white text-sm focus:border-[#CDA177]/50 outline-none transition-all"
+                                        value={cardDetails.name}
+                                        onChange={(e) => setCardDetails({ ...cardDetails, name: e.target.value.toUpperCase() })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Card Number"
+                                        maxLength="19"
+                                        className="w-full bg-black/40 border border-[#CDA177]/10 rounded-2xl px-6 py-4 text-white text-sm focus:border-[#CDA177]/50 outline-none transition-all"
+                                        value={cardDetails.number}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/\s?/g, '').replace(/(\d{4})/g, '$1 ').trim();
+                                            setCardDetails({ ...cardDetails, number: val });
+                                        }}
+                                    />
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <input
+                                            type="text"
+                                            placeholder="MM/YY"
+                                            maxLength="5"
+                                            className="w-full bg-black/40 border border-[#CDA177]/10 rounded-2xl px-6 py-4 text-white text-sm focus:border-[#CDA177]/50 outline-none transition-all"
+                                            value={cardDetails.expiry}
+                                            onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="CVV"
+                                            maxLength="3"
+                                            className="w-full bg-black/40 border border-[#CDA177]/10 rounded-2xl px-6 py-4 text-white text-sm focus:border-[#CDA177]/50 outline-none transition-all"
+                                            value={cardDetails.cvv}
+                                            onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={handleFinalOrder}
+                                    disabled={loading || !cardDetails.number || !cardDetails.cvv}
+                                    className="w-full bg-[#CDA177] text-black py-5 rounded-full font-black tracking-[0.2em] text-[11px] uppercase hover:bg-white transition-all flex items-center justify-center gap-3 disabled:opacity-50 mt-4 shadow-xl shadow-black/40"
+                                >
+                                    {loading ? 'Validating...' : `Pay Rs. ${finalTotal.toFixed(2)}`}
+                                </button>
+
+                                <p className="text-center text-[#a09c99] text-[9px] uppercase font-bold tracking-widest opacity-40">
+                                    Your personal data will be used to process your order.
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
