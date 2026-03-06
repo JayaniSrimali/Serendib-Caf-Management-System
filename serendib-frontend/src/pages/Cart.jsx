@@ -19,11 +19,15 @@ const Cart = () => {
     const [discountAmount, setDiscountAmount] = useState(0);
 
     const handleApplyPromo = () => {
-        if (promoInput.toUpperCase() === 'SERENDIB10') {
+        const code = promoInput.toUpperCase();
+        if (code === 'SERENDIB15') {
             setIsPromoApplied(true);
-            const total = Number(getCartTotal());
-            setDiscountAmount(total * 0.1);
-            toast.success('Promo SE RENDIB10 Applied! 10% Discount');
+            setDiscountAmount(Number(getCartTotal()) * 0.15);
+            toast.success('Promo SERENDIB15 Applied! 15% Discount');
+        } else if (code === 'SERENDIB10') {
+            setIsPromoApplied(true);
+            setDiscountAmount(Number(getCartTotal()) * 0.1);
+            toast.success('Promo SERENDIB10 Applied! 10% Discount');
         } else {
             toast.error('Invalid Promo Code');
         }
@@ -166,7 +170,7 @@ const Cart = () => {
                             </div>
                             <div className="flex-grow text-center sm:text-left">
                                 <h4 className="font-serif font-bold text-white text-lg">Have a voucher code?</h4>
-                                <p className="text-[#a09c99] text-[11px] uppercase tracking-widest font-bold">Use SERENDIB10 for 10% off</p>
+                                <p className="text-[#a09c99] text-[11px] uppercase tracking-widest font-bold">Use SERENDIB15 for 15% off</p>
                             </div>
                             <div className="flex items-center gap-2 w-full sm:w-auto">
                                 <input
@@ -181,8 +185,8 @@ const Cart = () => {
                                     onClick={handleApplyPromo}
                                     disabled={isPromoApplied || !promoInput}
                                     className={`px-6 py-3 rounded-full font-bold uppercase text-[10px] tracking-widest transition-all ${isPromoApplied
-                                            ? 'bg-green-600/20 text-green-400 border border-green-500/30'
-                                            : 'bg-[#CDA177] text-black hover:bg-[#b88c64]'
+                                        ? 'bg-green-600/20 text-green-400 border border-green-500/30'
+                                        : 'bg-[#CDA177] text-black hover:bg-[#b88c64]'
                                         }`}
                                 >
                                     {isPromoApplied ? <CheckCircle2 size={16} /> : 'Apply'}

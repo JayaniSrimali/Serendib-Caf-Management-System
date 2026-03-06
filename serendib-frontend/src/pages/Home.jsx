@@ -305,7 +305,13 @@ const Home = () => {
                     <p className="text-[#a09c99] text-[13px] leading-[2.2] max-w-xl mb-10">
                         Stop by after work, soak in the ambiance, and treat yourself to our master roasts at a special price.
                     </p>
-                    <button className="bg-[#CDA177] text-black px-12 py-5 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
+                    <button
+                        onClick={() => {
+                            navigator.clipboard.writeText('SERENDIB15');
+                            toast.success('Promo Code SERENDIB15 copied to clipboard!');
+                        }}
+                        className="bg-[#CDA177] text-black px-12 py-5 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105"
+                    >
                         Claim Offer
                     </button>
                 </motion.div>
