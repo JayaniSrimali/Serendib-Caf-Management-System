@@ -38,7 +38,10 @@ export const CartProvider = ({ children }) => {
     const clearCart = () => setCartItems([]);
 
     const getCartTotal = () => {
-        return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+        return cartItems.reduce((acc, item) => {
+            const activePrice = item.discountPrice && item.discountPrice < item.price ? item.discountPrice : item.price;
+            return acc + activePrice * item.quantity;
+        }, 0).toFixed(2);
     };
 
     return (
