@@ -173,10 +173,10 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
                         {[
-                            { name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: "Rs. 1100.00", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: "Rs. 1400.00", img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: "Rs. 1200.00", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" },
-                            { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: "Rs. 950.00", img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, discountPrice: 950.00, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: 1400.00, img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: 1200.00, discountPrice: 1000.00, img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" },
+                            { name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: 950.00, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" },
                         ].map((item, idx) => (
                             <motion.div
                                 key={idx}
@@ -188,10 +188,24 @@ const Home = () => {
                             >
                                 <div className="overflow-hidden mb-6 h-60 relative bg-black">
                                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                                    {item.discountPrice && (
+                                        <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ">
+                                            Sale
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="flex-grow flex flex-col px-2">
                                     <h3 className="font-serif font-bold text-xl text-white leading-tight mb-2">{item.name}</h3>
-                                    <span className="font-bold text-[#CDA177] text-lg mb-4">{item.price}</span>
+                                    <div className="flex items-center gap-3 mb-4">
+                                        {item.discountPrice ? (
+                                            <>
+                                                <span className="font-bold text-[#CDA177] text-lg">Rs. {item.discountPrice.toFixed(2)}</span>
+                                                <span className="text-[#a09c99] text-xs line-through opacity-50 font-bold">Rs. {item.price.toFixed(2)}</span>
+                                            </>
+                                        ) : (
+                                            <span className="font-bold text-[#CDA177] text-lg">Rs. {item.price.toFixed(2)}</span>
+                                        )}
+                                    </div>
                                     <p className="text-[#a09c99] text-[13px] mb-8 flex-grow leading-[1.8]">{item.desc}</p>
                                     <button className="w-full bg-transparent text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#CDA177] hover:text-black transition-colors flex items-center justify-center gap-3 border border-[#CDA177]/40">
                                         <ShoppingBag size={14} /> Add to Cart
