@@ -94,14 +94,21 @@ const Dashboard = () => {
                             <div className="space-y-6">
                                 {orders.map(order => (
                                     <div key={order._id} className="bg-[#130f0c] p-6 md:p-8 rounded-[24px] border border-[#CDA177]/10 hover:border-[#CDA177]/30 transition-colors flex flex-col md:flex-row justify-between items-start md:items-center gap-6 group">
-                                        <div>
-                                            <div className="text-[11px] text-[#CDA177]/80 font-bold tracking-widest uppercase mb-3 flex items-center gap-3">
-                                                <Clock size={14} className="opacity-80" /> {new Date(order.createdAt).toLocaleDateString()}
+                                        <div className="flex-grow">
+                                            <div className="text-[11px] text-[#CDA177]/80 font-bold tracking-widest uppercase mb-3 flex flex-wrap items-center gap-4">
+                                                <span className="flex items-center gap-1.5 opacity-80"><Clock size={14} /> {new Date(order.createdAt).toLocaleDateString()}</span>
+                                                <span className="w-1 h-1 bg-[#CDA177]/40 rounded-full"></span>
+                                                <span className="flex items-center gap-1.5 opacity-80">{order.orderType === 'delivery' ? 'Delivery' : 'Pickup'}</span>
                                             </div>
-                                            <h4 className="font-bold text-white font-serif text-2xl mb-2">Order #{order._id.substring(order._id.length - 6).toUpperCase()}</h4>
-                                            <p className="text-[14px] text-[#a09c99] mt-1">
-                                                {order.orderItems.length} handcrafted items
-                                            </p>
+                                            <h4 className="font-bold text-white font-serif text-2xl mb-2 tracking-wide">Order #{order._id.substring(order._id.length - 6).toUpperCase()}</h4>
+                                            <div className="flex items-center gap-6 mt-4">
+                                                <p className="text-[13px] text-[#a09c99] font-medium flex items-center gap-2">
+                                                    <ShoppingBag size={14} className="text-[#CDA177]/60" /> {order.orderItems.length} items
+                                                </p>
+                                                <p className="text-[13px] text-[#a09c99] font-medium flex items-center gap-2">
+                                                    <CreditCard size={14} className="text-[#CDA177]/60" /> {order.paymentMethod === 'online' ? 'Paid Online' : 'Pay on Collection'}
+                                                </p>
+                                            </div>
                                         </div>
                                         <div className="flex flex-col items-start md:items-end gap-4 w-full md:w-auto mt-4 md:mt-0 pt-4 md:pt-0 border-t border-[#CDA177]/10 md:border-t-0">
                                             <span className="font-bold text-[#CDA177] text-2xl tracking-wide">Rs. {order.totalPrice?.toFixed(2)}</span>
