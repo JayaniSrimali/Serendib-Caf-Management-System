@@ -31,23 +31,10 @@ const Layout = ({ children }) => {
   return (
     <div className="bg-theme-bg min-h-screen font-sans text-theme-text flex flex-col overflow-x-hidden selection:bg-theme-accent selection:text-white">
 
-      {/* Top Bar */}
-      <div className="bg-[#2C1E16] text-[#E8DCC4] text-xs py-2 px-6 md:px-12 flex justify-between items-center z-50 relative border-b border-white/5">
-        <div className="flex gap-6 max-w-[1400px] mx-auto w-full justify-between items-center">
-          <p className="hidden md:block text-[#E8DCC4]/80">Welcome to Café Serendib — The True Taste of Ceylon</p>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2"><Phone size={14} /> +94 11 234 5678</div>
-            <div className="flex gap-3">
-              <Facebook size={14} className="hover:text-white cursor-pointer transition-colors" />
-              <Instagram size={14} className="hover:text-white cursor-pointer transition-colors" />
-              <Twitter size={14} className="hover:text-white cursor-pointer transition-colors" />
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Navigation */}
-      <header className="w-full bg-[#2C1E16] sticky top-0 z-40 shadow-lg border-b border-white/5 relative">
+      <header className="w-full bg-[#2C1E16] fixed top-0 left-0 right-0 z-50 shadow-lg border-b border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-5 flex justify-between items-center">
 
           {/* Logo */}
@@ -97,7 +84,7 @@ const Layout = ({ children }) => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow w-full flex flex-col items-center">
+      <main className="flex-grow w-full flex flex-col items-center pt-[85px]">
         {children}
       </main>
 
