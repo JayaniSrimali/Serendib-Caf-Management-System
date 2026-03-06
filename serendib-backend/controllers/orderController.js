@@ -2,7 +2,7 @@ const Order = require("../models/Order");
 
 const createOrder = async (req, res) => {
     try {
-        const { orderItems, totalPrice } = req.body;
+        const { orderItems, totalPrice, orderType, paymentMethod, deliveryAddress } = req.body;
         if (orderItems && orderItems.length === 0) {
             return res.status(400).json({ message: "No order items" });
         } else {
@@ -10,6 +10,9 @@ const createOrder = async (req, res) => {
                 orderItems,
                 user: req.user._id,
                 totalPrice,
+                orderType,
+                paymentMethod,
+                deliveryAddress,
             });
 
             const createdOrder = await order.save();
