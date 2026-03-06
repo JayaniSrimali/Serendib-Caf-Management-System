@@ -32,7 +32,7 @@ const Login = () => {
         e.preventDefault();
         try {
             await login(formData.email, formData.password);
-            toast.success('Welcome Back!');
+            toast.success('Logged in successfully!');
             navigate('/');
         } catch (error) {
             toast.error(error.message || 'Login failed');

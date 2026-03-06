@@ -32,7 +32,7 @@ const Register = () => {
         e.preventDefault();
         try {
             await register(formData.name, formData.email, formData.password);
-            toast.success('Account created successfully!');
+            toast.success('Welcome to Café Serendib!');
             navigate('/');
         } catch (error) {
             toast.error(error.message || 'Registration failed');

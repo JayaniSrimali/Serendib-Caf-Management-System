@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
             const { data } = await axiosInstance.post('/auth/login', { email, password });
             setUserInfo(data);
             localStorage.setItem('userInfo', JSON.stringify(data));
-            toast.success('Logged in successfully!');
             return data;
         } catch (error) {
             toast.error(error.response?.data?.message || 'Login failed');
@@ -44,7 +43,6 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setUserInfo(null);
         localStorage.removeItem('userInfo');
-        toast.success('Logged out');
     };
 
     return (
