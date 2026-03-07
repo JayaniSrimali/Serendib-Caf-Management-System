@@ -132,7 +132,7 @@ const About = () => {
                         </div>
 
                         <Link to="/reserve">
-                            <button className="bg-[#CDA177] text-black px-10 py-4 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40">
+                            <button className="bg-[#CDA177] text-black px-10 py-4 rounded-2xl  text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40">
                                 RESERVE NOW
                             </button>
                         </Link>
@@ -233,7 +233,7 @@ const About = () => {
                     </div>
                     <div className="lg:w-1/3 flex justify-start lg:justify-end">
                         <Link to="/reserve">
-                            <button className="bg-[#CDA177] text-black px-10 py-5 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
+                            <button className="bg-[#CDA177] text-black px-10 py-5 text-[11px]  rounded-2xl font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
                                 MAKE A RESERVATION
                             </button>
                         </Link>

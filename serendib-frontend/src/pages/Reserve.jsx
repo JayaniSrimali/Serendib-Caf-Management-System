@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axiosInstance from '../utils/axiosInstance';
 import toast from 'react-hot-toast';
 import { Loader2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const rightImages = [
     "https://images.unsplash.com/photo-1544148103-0773bf10d330?q=80&w=2000&auto=format&fit=crop",
@@ -17,14 +18,27 @@ const ctaImages = [
 ];
 
 const Reserve = () => {
+    const { userInfo } = useAuth();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
+        name: userInfo?.name || '',
+        email: userInfo?.email || '',
         phone: '',
         date: '',
         time: '',
         guests: 2
     });
+
+    useEffect(() => {
+        if (userInfo) {
+            setFormData(prev => ({
+                ...prev,
+                name: userInfo.name,
+                email: userInfo.email
+            }));
+        }
+    }, [userInfo]);
+
     const [loading, setLoading] = useState(false);
     const [rightImageIndex, setRightImageIndex] = useState(0);
     const [ctaImageIndex, setCtaImageIndex] = useState(0);
@@ -53,8 +67,9 @@ const Reserve = () => {
         setLoading(true);
         try {
             await axiosInstance.post('/reservations', formData);
-            toast.success('Table reserved successfully! We will see you soon.');
-            setFormData({ name: '', email: '', phone: '', date: '', time: '', guests: 2 });
+            toast.success('Table reserved successfully!');
+            setFormData({ name: userInfo?.name || '', email: userInfo?.email || '', phone: '', date: '', time: '', guests: 2 });
+            if (userInfo) navigate('/dashboard');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to reserve table');
         } finally {
@@ -294,7 +309,7 @@ const Reserve = () => {
                     </h4>
                     <h2 className="text-5xl md:text-6xl font-bold mb-10 text-white tracking-wide">Stay Close With Us</h2>
                     <Link to="/contact">
-                        <button className="bg-[#CDA177] text-black px-10 py-4 text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
+                        <button className="bg-[#CDA177] text-black px-10 py-4  rounded-2xl text-[11px] font-bold uppercase tracking-widest hover:bg-[#b88c64] transition-colors shadow-lg shadow-black/40 hover:scale-105">
                             CONTACT US
                         </button>
                     </Link>
