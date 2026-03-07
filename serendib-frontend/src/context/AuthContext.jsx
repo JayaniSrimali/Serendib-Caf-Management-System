@@ -45,8 +45,21 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem('userInfo');
     };
 
+    const updateProfile = async (userData) => {
+        try {
+            const { data } = await axiosInstance.put('/auth/profile', userData);
+            setUserInfo(data);
+            localStorage.setItem('userInfo', JSON.stringify(data));
+            toast.success('Profile updated successfully');
+            return data;
+        } catch (error) {
+            toast.error(error.response?.data?.message || 'Update failed');
+            throw error;
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ userInfo, login, register, logout, loading }}>
+        <AuthContext.Provider value={{ userInfo, login, register, logout, updateProfile, loading }}>
             {!loading && children}
         </AuthContext.Provider>
     );
