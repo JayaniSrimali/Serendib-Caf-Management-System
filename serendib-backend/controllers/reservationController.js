@@ -16,7 +16,13 @@ const createReservation = async (req, res) => {
 
 const getUserReservations = async (req, res) => {
     try {
-        const reservations = await Reservation.find({ user: req.user._id }).sort({ date: 1 });
+        // Find reservations by user ID OR by user's email to catch legacy/guest bookings
+        const reservations = await Reservation.find({
+            $or: [
+                { user: req.user._id },
+                { email: req.user.email }
+            ]
+        }).sort({ date: 1 });
         res.json(reservations);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -38,8 +44,11 @@ const updateReservation = async (req, res) => {
         const reservation = await Reservation.findById(req.params.id);
 
         if (reservation) {
-            // Check if user owns the reservation or is admin
-            if (reservation.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+            // Check if user owns the reservation (by ID or Email) or is admin
+            const isOwner = (reservation.user && reservation.user.toString() === req.user._id.toString()) ||
+                (reservation.email === req.user.email);
+
+            if (!isOwner && req.user.role !== 'admin') {
                 return res.status(401).json({ message: 'Not authorized' });
             }
 
@@ -63,7 +72,11 @@ const deleteReservation = async (req, res) => {
         const reservation = await Reservation.findById(req.params.id);
 
         if (reservation) {
-            if (reservation.user.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
+            // Check if user owns the reservation (by ID or Email) or is admin
+            const isOwner = (reservation.user && reservation.user.toString() === req.user._id.toString()) ||
+                (reservation.email === req.user.email);
+
+            if (!isOwner && req.user.role !== 'admin') {
                 return res.status(401).json({ message: 'Not authorized' });
             }
 
