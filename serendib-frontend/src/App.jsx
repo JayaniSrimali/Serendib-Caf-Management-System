@@ -1,6 +1,8 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { Phone, MapPin, Clock, Facebook, Instagram, Twitter, Search, ShoppingBag } from 'lucide-react';
+import { Phone, MapPin, Clock, Facebook, Instagram, Twitter, Search, ShoppingBag, User, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import About from './pages/About';
@@ -16,12 +18,22 @@ import ScrollToTop from './components/ScrollToTop';
 import { useCart } from './context/CartContext';
 import { useAuth } from './context/AuthContext';
 
-import { useLocation } from 'react-router-dom';
-
 const Layout = ({ children }) => {
   const { cartItems } = useCart();
   const { userInfo } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/menu?q=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
 
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/reset-password';
 
@@ -56,7 +68,12 @@ const Layout = ({ children }) => {
 
           {/* Right Icons / CTA */}
           <div className="flex items-center gap-6">
-            <button className="hidden sm:block text-[#E8DCC4]/80 hover:text-white transition-colors"><Search size={22} /></button>
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="hidden sm:block text-[#E8DCC4]/80 hover:text-white transition-colors"
+            >
+              <Search size={22} />
+            </button>
 
             <Link to="/cart" className="relative text-[#E8DCC4]/80 hover:text-white transition-colors hidden sm:block">
               <ShoppingBag size={22} />
@@ -68,8 +85,8 @@ const Layout = ({ children }) => {
             </Link>
 
             {userInfo ? (
-              <Link to="/dashboard" className="hidden border border-[#E8DCC4]/20 text-[#E8DCC4] px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#E8DCC4] hover:text-[#2C1E16] transition-all md:block">
-                Dashboard
+              <Link to="/dashboard" state={{ tab: 'profile' }} className="text-[#E8DCC4]/80 hover:text-theme-accent transition-all p-1.5 rounded-full border border-[#E8DCC4]/10 hover:border-theme-accent/30 flex items-center justify-center">
+                <User size={22} />
               </Link>
             ) : (
               <Link to="/login" className="hidden border border-[#E8DCC4]/20 text-[#E8DCC4] px-4 py-2 rounded-full text-xs font-semibold hover:bg-[#E8DCC4] hover:text-[#2C1E16] transition-all md:block">
@@ -213,6 +230,63 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </footer>
+
+      {/* Global Search Overlay */}
+      <AnimatePresence>
+        {isSearchOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] bg-[#130f0c]/95 backdrop-blur-xl flex flex-col items-center justify-center px-6"
+          >
+            <button
+              onClick={() => setIsSearchOpen(false)}
+              className="absolute top-10 right-10 text-[#E8DCC4]/40 hover:text-white transition-all transform hover:rotate-90"
+            >
+              <X size={32} />
+            </button>
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="w-full max-w-2xl text-center"
+            >
+              <h2 className="text-3xl font-serif font-bold text-white mb-10 tracking-widest uppercase italic">What are you craving?</h2>
+
+              <form onSubmit={handleSearch} className="relative group">
+                <input
+                  autoFocus
+                  type="text"
+                  placeholder="Search our collection..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent border-b-2 border-[#CDA177]/20 py-6 text-4xl md:text-5xl font-serif text-white placeholder:text-white/10 focus:outline-none focus:border-[#CDA177] transition-all text-center"
+                />
+                <div className="mt-8 flex justify-center gap-4">
+                  {['Espresso', 'Kottu', 'Iced Coffee', 'Pastry'].map((tag) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      onClick={() => setSearchQuery(tag)}
+                      className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#CDA177]/60 hover:text-[#CDA177] transition-colors"
+                    >
+                      # {tag}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="submit"
+                  className="mt-12 bg-[#CDA177] text-black px-12 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-white transition-all"
+                >
+                  Find Serendipity
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

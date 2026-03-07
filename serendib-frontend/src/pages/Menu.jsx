@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Search, Tag } from 'lucide-react';
@@ -6,29 +7,28 @@ import toast from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Menu = () => {
+    const [searchParams] = useSearchParams();
+    const query = searchParams.get('q') || '';
+
     const [menuItems, setMenuItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('All');
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState(query);
     const { addToCart } = useCart();
+
+    // Effect to update search term if URL params change
+    useEffect(() => {
+        if (query) {
+            setSearchTerm(query);
+            window.scrollTo({ top: 400, behavior: 'smooth' });
+        }
+    }, [query]);
 
     useEffect(() => {
         const fetchMenu = async () => {
             try {
                 const { data } = await axiosInstance.get('/menu');
-                // If backend is empty, provide some default realistic data for demonstration
-                if (data.length === 0) {
-                    setMenuItems([
-                        { _id: '1', name: "Ceylon Cinnamon Latte", description: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, discountPrice: 950.00, category: "Coffee", image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&q=80" },
-                        { _id: '2', name: "Serendib Mocha", description: "Dark chocolate meets our signature dark roast.", price: 1400.00, category: "Coffee", image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&q=80" },
-                        { _id: '3', name: "Kithul Treacle Cake", description: "Moist cake sweetened with natural Kithul treacle.", price: 1200.00, discountPrice: 1000.00, category: "Dessert", image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&q=80" },
-                        { _id: '4', name: "Organic Iced Coffee", description: "Cold brewed overnight for a perfectly smooth finish.", price: 950.00, category: "Cold Beverage", image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=80" },
-                        { _id: '5', name: "Spicy Chicken Pastry", description: "Flaky crust packed with savory roasted chicken.", price: 850.00, discountPrice: 750.00, category: "Savory", image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?w=400&q=80" },
-                        { _id: '6', name: "Classic Cappuccino", description: "Perfect balance of espresso, steamed milk and foam.", price: 1050.00, category: "Coffee", image: "https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&q=80" },
-                    ]);
-                } else {
-                    setMenuItems(data);
-                }
+                setMenuItems(data);
             } catch (error) {
                 console.error("Failed to fetch menu", error);
                 toast.error("Failed to load menu items");
@@ -86,8 +86,8 @@ const Menu = () => {
                                 key={i}
                                 onClick={() => setFilter(cat)}
                                 className={`px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-widest whitespace-nowrap transition-all duration-300 border ${filter === cat
-                                        ? 'bg-[#CDA177] text-black border-[#CDA177] shadow-lg shadow-[#CDA177]/20'
-                                        : 'bg-[#1a1511] text-[#a09c99] border-[#CDA177]/10 hover:border-[#CDA177]/40 hover:text-white'
+                                    ? 'bg-[#CDA177] text-black border-[#CDA177] shadow-lg shadow-[#CDA177]/20'
+                                    : 'bg-[#1a1511] text-[#a09c99] border-[#CDA177]/10 hover:border-[#CDA177]/40 hover:text-white'
                                     }`}
                             >
                                 {cat}
