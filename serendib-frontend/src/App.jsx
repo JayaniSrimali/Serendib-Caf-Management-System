@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
+import ScrollToTop from './components/ScrollToTop';
 import { useCart } from './context/CartContext';
 import { useAuth } from './context/AuthContext';
 
@@ -219,6 +220,7 @@ const Layout = ({ children }) => {
 function App() {
   return (
     <Layout>
+      <ScrollToTop />
       <Toaster position="top-right"
         toastOptions={{
           style: { background: '#2B2019', color: '#fff' }
