@@ -1,11 +1,45 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Star, CheckCircle2, ChevronRight, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
+import axiosInstance from '../utils/axiosInstance';
 
 const Home = () => {
     const { addToCart } = useCart();
+    const [featuredItems, setFeaturedItems] = useState([]);
+    const [loadingFeatured, setLoadingFeatured] = useState(true);
+    const [reviews, setReviews] = useState([]);
+    const [loadingReviews, setLoadingReviews] = useState(true);
+
+    useEffect(() => {
+        const fetchFeatured = async () => {
+            try {
+                const { data } = await axiosInstance.get('/menu/featured');
+                setFeaturedItems(data);
+            } catch (error) {
+                console.error("Failed to fetch featured items:", error);
+            } finally {
+                setLoadingFeatured(false);
+            }
+        };
+
+        const fetchReviews = async () => {
+            try {
+                const { data } = await axiosInstance.get('/reviews');
+                setReviews(data);
+            } catch (error) {
+                console.error("Failed to fetch reviews:", error);
+            } finally {
+                setLoadingReviews(false);
+            }
+        };
+
+        fetchFeatured();
+        fetchReviews();
+    }, []);
+
     return (
         <div className="w-full bg-[#130f0c] text-white font-sans selection:bg-[#CDA177] selection:text-black">
 
@@ -174,55 +208,54 @@ const Home = () => {
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-                        {[
-                            { _id: 'f1', name: "Ceylon Cinnamon Latte", desc: "Cozy blend of rich espresso & pure Ceylon cinnamon.", price: 1100.00, discountPrice: 950.00, img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80" },
-                            { _id: 'f2', name: "Serendib Mocha", desc: "Dark chocolate meets our signature dark roast.", price: 1400.00, img: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=400&q=80" },
-                            { _id: 'f3', name: "Kithul Treacle Cake", desc: "Moist cake sweetened with natural Kithul treacle.", price: 1200.00, discountPrice: 1000.00, img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" },
-                            { _id: 'f4', name: "Organic Iced Coffee", desc: "Cold brewed overnight for a perfectly smooth finish.", price: 950.00, img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80" },
-                        ].map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: idx * 0.15 }}
-                                className="bg-[#130f0c] p-5 border border-[#CDA177]/10 hover:border-[#CDA177]/40 shadow-sm hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
-                            >
-                                <div className="overflow-hidden mb-6 h-60 relative bg-black">
-                                    <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
-                                    {item.discountPrice && (
-                                        <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ">
-                                            Sale
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="flex-grow flex flex-col px-2">
-                                    <h3 className="font-serif font-bold text-xl text-white leading-tight mb-2">{item.name}</h3>
-                                    <div className="flex items-center gap-3 mb-4">
-                                        {item.discountPrice ? (
-                                            <>
-                                                <span className="font-bold text-[#CDA177] text-lg">Rs. {item.discountPrice.toFixed(2)}</span>
-                                                <span className="text-[#a09c99] text-xs line-through opacity-50 font-bold">Rs. {item.price.toFixed(2)}</span>
-                                            </>
-                                        ) : (
-                                            <span className="font-bold text-[#CDA177] text-lg">Rs. {item.price.toFixed(2)}</span>
+                    {loadingFeatured ? (
+                        <div className="text-center py-20 text-[#a09c99] uppercase tracking-widest text-[10px] font-bold">Curating masterpieces...</div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                            {featuredItems.map((item, idx) => (
+                                <motion.div
+                                    key={item._id}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: idx * 0.15 }}
+                                    className="bg-[#130f0c] p-5 border border-[#CDA177]/10 hover:border-[#CDA177]/40 shadow-sm hover:shadow-2xl transition-all duration-300 group flex flex-col h-full"
+                                >
+                                    <div className="overflow-hidden mb-6 h-60 relative bg-black">
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+                                        {item.discountPrice && (
+                                            <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ">
+                                                Sale
+                                            </div>
                                         )}
                                     </div>
-                                    <p className="text-[#a09c99] text-[13px] mb-8 flex-grow leading-[1.8]">{item.desc}</p>
-                                    <button
-                                        onClick={() => {
-                                            addToCart({ ...item, image: item.img });
-                                            toast.success(`${item.name} added to cart!`);
-                                        }}
-                                        className="w-full bg-transparent text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#CDA177] hover:text-black transition-colors flex items-center justify-center gap-3 border border-[#CDA177]/40"
-                                    >
-                                        <ShoppingBag size={14} /> Add to Cart
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                                    <div className="flex-grow flex flex-col px-2">
+                                        <h3 className="font-serif font-bold text-xl text-white leading-tight mb-2 uppercase tracking-wide group-hover:text-[#CDA177] transition-colors">{item.name}</h3>
+                                        <div className="flex items-center gap-3 mb-4">
+                                            {item.discountPrice ? (
+                                                <>
+                                                    <span className="font-bold text-[#CDA177] text-lg">Rs. {item.discountPrice.toFixed(2)}</span>
+                                                    <span className="text-[#a09c99] text-xs line-through opacity-50 font-bold">Rs. {item.price.toFixed(2)}</span>
+                                                </>
+                                            ) : (
+                                                <span className="font-bold text-[#CDA177] text-lg">Rs. {item.price.toFixed(2)}</span>
+                                            )}
+                                        </div>
+                                        <p className="text-[#a09c99] text-[13px] mb-8 flex-grow leading-[1.8] font-light">{item.description}</p>
+                                        <button
+                                            onClick={() => {
+                                                addToCart(item);
+                                                toast.success(`${item.name} added to cart!`);
+                                            }}
+                                            className="w-full bg-transparent text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-[#CDA177] hover:text-black transition-colors flex items-center justify-center gap-3 border border-[#CDA177]/40"
+                                        >
+                                            <ShoppingBag size={14} /> Add to Cart
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -317,53 +350,55 @@ const Home = () => {
                 </motion.div>
             </section>
 
-            {/* 6. CUSTOMER TESTIMONIALS */}
-            <section className="w-full bg-[#1a1511] py-32 px-6 md:px-12 border-y border-[#CDA177]/10">
-                <div className="max-w-[1400px] mx-auto text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <h4 className="text-[#CDA177] text-[10px] font-bold tracking-[0.35em] mb-4 uppercase flex items-center justify-center gap-4">
-                            <span className="w-6 h-[1px] bg-[#CDA177]/80"></span> REVIEWS <span className="w-6 h-[1px] bg-[#CDA177]/80"></span>
-                        </h4>
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-20">What Our Guests Say</h2>
-                    </motion.div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left relative z-10">
-                        {[
-                            { name: "Sarah L.", role: "Local Guide", rating: 5, review: "The absolute best coffee I've had in a long time! The ambiance is incredibly cozy and the dark theme is just stunning." },
-                            { name: "Nuwan D.", role: "Food Critic", rating: 5, review: "A perfect blend of modern café aesthetics and local flavors. The Kithul cake paired with their Arabica is an absolute masterpiece." },
-                            { name: "Emily R.", role: "Regular Customer", rating: 5, review: "My new favorite spot to work and relax. Fast wifi, magnificent seating, and the Ceylon latte is out of this world." }
-                        ].map((testi, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: i * 0.2 }}
-                                className="bg-[#130f0c] p-10 shadow-sm border border-[#CDA177]/10 relative pt-12 group hover:border-[#CDA177]/30 transition-colors"
-                            >
-                                <div className="absolute top-0 right-10 transform -translate-y-1/2 bg-[#CDA177] text-black p-4 shadow-lg group-hover:-translate-y-6 transition-transform">
-                                    <Quote size={20} className="fill-current" />
-                                </div>
-                                <div className="flex gap-1 mb-8">
-                                    {[...Array(5)].map((_, idx) => (
-                                        <Star key={idx} size={14} className={idx < testi.rating ? "text-[#CDA177] fill-[#CDA177]" : "text-white/10"} />
-                                    ))}
-                                </div>
-                                <p className="text-[#a09c99] italic mb-10 text-[13px] leading-[2.2] flex-grow">
-                                    "{testi.review}"
-                                </p>
-                                <div className="border-t border-[#CDA177]/10 pt-6">
-                                    <h4 className="font-serif font-bold text-lg text-white mb-1">{testi.name}</h4>
-                                    <p className="text-[10px] text-[#CDA177] font-bold uppercase tracking-widest">{testi.role}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+            {/* 6. TESTIMONIALS SECTION */}
+            <section className="w-full bg-[#130f0c] py-32 px-6 md:px-12 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#CDA177]/20 to-transparent"></div>
+                <div className="max-w-[1400px] mx-auto">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+                        <div>
+                            <h4 className="text-[#CDA177] text-[10px] font-bold tracking-[0.35em] mb-4 uppercase flex items-center gap-4">
+                                <span className="w-8 h-[1px] bg-[#CDA177]/80"></span> WHAT OUR GUESTS SAY
+                            </h4>
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-0 uppercase tracking-widest">Our Reviews</h2>
+                        </div>
+                        <p className="max-w-md text-[#a09c99] text-[13px] leading-relaxed italic border-l border-[#CDA177]/30 pl-8">
+                            "Serendipity is finding something good without looking for it. Our guests find it every day in our coffeehouse."
+                        </p>
                     </div>
+
+                    {loadingReviews ? (
+                        <div className="text-center py-20 text-[#a09c99] uppercase tracking-widest text-[10px] font-bold">Listening to our guests...</div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                            {reviews.map((testi, i) => (
+                                <motion.div
+                                    key={testi._id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: i * 0.2 }}
+                                    className="bg-[#1a1511] p-12 border border-[#CDA177]/5 hover:border-[#CDA177]/20 transition-all duration-500 relative group"
+                                >
+                                    <Quote className="absolute top-8 right-10 text-[#CDA177]/10 group-hover:text-[#CDA177]/20 transition-colors" size={40} />
+                                    <div className="flex gap-1 mb-8">
+                                        {[...Array(testi.rating)].map((_, i) => (
+                                            <Star key={i} size={14} className="fill-[#CDA177] text-[#CDA177]" />
+                                        ))}
+                                    </div>
+                                    <p className="text-white text-lg font-serif italic mb-10 leading-relaxed font-light">"{testi.review}"</p>
+                                    <div className="flex items-center gap-5 mt-auto">
+                                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#CDA177]/20 group-hover:border-[#CDA177]/50 transition-colors">
+                                            <img src={testi.image || "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80"} alt={testi.name} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-white font-bold text-sm tracking-widest uppercase mb-1">{testi.name}</h4>
+                                            <p className="text-[#CDA177] text-[10px] font-bold tracking-widest uppercase opacity-80">{testi.role}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
 
