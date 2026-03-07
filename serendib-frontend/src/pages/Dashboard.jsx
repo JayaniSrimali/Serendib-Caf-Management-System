@@ -38,6 +38,14 @@ const Dashboard = () => {
     const [feedbackLoading, setFeedbackLoading] = useState(false);
     const [editingReview, setEditingReview] = useState(null);
 
+    // Custom Confirm Modal State
+    const [confirmModal, setConfirmModal] = useState({
+        isOpen: false,
+        title: '',
+        message: '',
+        onConfirm: null
+    });
+
     useEffect(() => {
         if (!userInfo) {
             navigate('/login');
@@ -115,16 +123,21 @@ const Dashboard = () => {
         }
     };
 
-    const handleDeleteReservation = async (id) => {
-        if (!window.confirm('Are you sure you want to cancel this reservation?')) return;
-
-        try {
-            await axiosInstance.delete(`/reservations/${id}`);
-            setReservations(reservations.filter(r => r._id !== id));
-            toast.success('Reservation cancelled');
-        } catch (error) {
-            toast.error('Failed to cancel reservation');
-        }
+    const handleDeleteReservation = (id) => {
+        setConfirmModal({
+            isOpen: true,
+            title: 'Cancel Reservation?',
+            message: 'This action will remove your table booking. You will need to book again if you change your mind.',
+            onConfirm: async () => {
+                try {
+                    await axiosInstance.delete(`/reservations/${id}`);
+                    setReservations(reservations.filter(r => r._id !== id));
+                    toast.success('Reservation cancelled');
+                } catch (error) {
+                    toast.error('Failed to cancel reservation');
+                }
+            }
+        });
     };
 
     const handleEditReservation = (res) => {
@@ -177,15 +190,21 @@ const Dashboard = () => {
         }
     };
 
-    const handleDeleteReview = async (id) => {
-        if (!window.confirm('Delete this review?')) return;
-        try {
-            await axiosInstance.delete(`/reviews/${id}`);
-            setMyReviews(myReviews.filter(r => r._id !== id));
-            toast.success('Review deleted');
-        } catch (error) {
-            toast.error('Failed to delete review');
-        }
+    const handleDeleteReview = (id) => {
+        setConfirmModal({
+            isOpen: true,
+            title: 'Delete Feedback?',
+            message: 'Are you sure you want to remove this review? This serendipitous memory will be lost forever.',
+            onConfirm: async () => {
+                try {
+                    await axiosInstance.delete(`/reviews/${id}`);
+                    setMyReviews(myReviews.filter(r => r._id !== id));
+                    toast.success('Review deleted');
+                } catch (error) {
+                    toast.error('Failed to delete review');
+                }
+            }
+        });
     };
 
     const handleEditReview = (rev) => {
@@ -699,6 +718,50 @@ const Dashboard = () => {
                                         Close Details
                                     </button>
                                 </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+            {/* CUSTOM CONFIRMATION MODAL */}
+            <AnimatePresence>
+                {confirmModal.isOpen && (
+                    <div className="fixed inset-0 z-[110] flex items-center justify-center p-6">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setConfirmModal({ ...confirmModal, isOpen: false })}
+                            className="absolute inset-0 bg-[#0a0807]/90 backdrop-blur-md"
+                        ></motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="bg-[#1a1511] w-full max-w-sm rounded-[32px] border border-[#CDA177]/20 relative z-10 overflow-hidden shadow-2xl p-10 text-center"
+                        >
+                            <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center text-red-500 mx-auto mb-6 border border-red-500/20">
+                                <Trash2 size={28} />
+                            </div>
+                            <h3 className="text-2xl font-serif font-bold text-white mb-4 tracking-tight">{confirmModal.title}</h3>
+                            <p className="text-[#a09c99] text-sm leading-relaxed mb-10">{confirmModal.message}</p>
+
+                            <div className="flex flex-col gap-3">
+                                <button
+                                    onClick={() => {
+                                        confirmModal.onConfirm();
+                                        setConfirmModal({ ...confirmModal, isOpen: false });
+                                    }}
+                                    className="w-full bg-red-500 hover:bg-red-600 text-white py-4 rounded-full font-bold uppercase text-[10px] tracking-widest transition-all shadow-lg shadow-red-500/20"
+                                >
+                                    Confirm Action
+                                </button>
+                                <button
+                                    onClick={() => setConfirmModal({ ...confirmModal, isOpen: false })}
+                                    className="w-full bg-transparent border border-[#CDA177]/10 text-[#a09c99] py-4 rounded-full font-bold uppercase text-[10px] tracking-widest hover:bg-white/5 transition-all"
+                                >
+                                    Cancel
+                                </button>
                             </div>
                         </motion.div>
                     </div>
