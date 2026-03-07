@@ -69,7 +69,7 @@ const Reserve = () => {
             await axiosInstance.post('/reservations', formData);
             toast.success('Table reserved successfully!');
             setFormData({ name: userInfo?.name || '', email: userInfo?.email || '', phone: '', date: '', time: '', guests: 2 });
-            if (userInfo) navigate('/dashboard');
+            if (userInfo) navigate('/dashboard', { state: { tab: 'reservations' } });
         } catch (error) {
             toast.error(error.response?.data?.message || 'Failed to reserve table');
         } finally {
@@ -223,6 +223,12 @@ const Reserve = () => {
                                     <option value="6">6+ People</option>
                                 </select>
                             </div>
+
+                            {!userInfo && (
+                                <p className="text-[10px] text-[#CDA177]/60 font-bold uppercase tracking-widest bg-[#CDA177]/5 p-4 rounded-xl border border-[#CDA177]/10">
+                                    Tip: <Link to="/login?redirect=/reserve" className="text-[#CDA177] underline">Login</Link> to track and manage your reservations in your dashboard.
+                                </p>
+                            )}
 
                             <div className="opacity-0 animate-fade-in-up delay-700">
                                 <button

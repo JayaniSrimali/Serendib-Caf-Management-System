@@ -16,15 +16,26 @@ const createReservation = async (req, res) => {
 
 const getUserReservations = async (req, res) => {
     try {
-        // Find reservations by user ID OR by user's email to catch legacy/guest bookings
+        const searchEmail = req.user.email.trim();
+        const searchUserId = req.user._id;
+
+        console.log(`[DEBUG] Searching for reservations. UserID: ${searchUserId}, Email: "${searchEmail}"`);
+
         const reservations = await Reservation.find({
             $or: [
-                { user: req.user._id },
-                { email: req.user.email }
+                { user: searchUserId },
+                { email: { $regex: new RegExp("^" + searchEmail.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "i") } }
             ]
         }).sort({ date: 1 });
+
+        console.log(`[DEBUG] Found ${reservations.length} reservations for ${searchEmail}`);
+        if (reservations.length > 0) {
+            console.log(`[DEBUG] First matching ID: ${reservations[0]._id}`);
+        }
+
         res.json(reservations);
     } catch (error) {
+        console.error("[ERROR] getUserReservations:", error);
         res.status(500).json({ message: error.message });
     }
 };
