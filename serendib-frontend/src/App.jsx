@@ -130,15 +130,15 @@ const Layout = ({ children }) => {
                 Crafting authentic Sri Lankan coffee experiences since 1998. Every bean tells a story of our heritage and dedication to the perfect brew.
               </p>
               <div className="flex gap-4">
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Facebook size={18} />
-                </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Twitter size={18} />
-                </div>
-                <div className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/5 border border-black/5 flex items-center justify-center hover:bg-theme-accent hover:border-theme-accent text-theme-textMuted hover:text-white cursor-pointer transition-all">
                   <Instagram size={18} />
-                </div>
+                </a>
               </div>
             </div>
 
@@ -188,9 +188,9 @@ const Layout = ({ children }) => {
               </h4>
               <ul className="space-y-4 text-sm font-medium">
                 <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Help Center</Link></li>
-                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Delivery Info</Link></li>
-                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Track Order</Link></li>
-                <li><Link to="/contact" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Privacy Policy</Link></li>
+                <li><Link to="/about" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Delivery Info</Link></li>
+                <li><Link to="/dashboard" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Track Order</Link></li>
+                <li><Link to="/about" className="text-theme-textMuted/60 hover:text-theme-accent transition-colors flex items-center gap-2"><span>&rsaquo;</span> Privacy Policy</Link></li>
               </ul>
             </div>
 
