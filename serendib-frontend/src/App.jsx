@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { Phone, MapPin, Clock, Facebook, Instagram, Twitter, Search, ShoppingBag, User, X } from 'lucide-react';
+import { Phone, MapPin, Clock, Facebook, Instagram, Twitter, Search, ShoppingBag, User, X, Menu as MenuIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -36,6 +37,11 @@ const Layout = ({ children }) => {
   };
 
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register' || location.pathname === '/forgot-password' || location.pathname === '/reset-password';
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   if (isAuthPage) {
     return <>{children}</>;
@@ -67,7 +73,8 @@ const Layout = ({ children }) => {
           </nav>
 
           {/* Right Icons / CTA */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
+            {/* Search - visible sm+ */}
             <button
               onClick={() => setIsSearchOpen(true)}
               className="hidden sm:block text-[#E8DCC4]/80 hover:text-white transition-colors"
@@ -75,6 +82,7 @@ const Layout = ({ children }) => {
               <Search size={22} />
             </button>
 
+            {/* Cart - visible sm+ */}
             <Link to="/cart" className="relative text-[#E8DCC4]/80 hover:text-white transition-colors hidden sm:block">
               <ShoppingBag size={22} />
               {cartItems?.length > 0 && (
@@ -84,6 +92,7 @@ const Layout = ({ children }) => {
               )}
             </Link>
 
+            {/* User icon - visible always */}
             {userInfo ? (
               <Link to="/dashboard" state={{ tab: 'profile' }} className="text-[#E8DCC4]/80 hover:text-theme-accent transition-all p-1.5 rounded-full border border-[#E8DCC4]/10 hover:border-theme-accent/30 flex items-center justify-center">
                 <User size={22} />
@@ -94,11 +103,100 @@ const Layout = ({ children }) => {
               </Link>
             )}
 
+            {/* Reserve - desktop only */}
             <Link to="/reserve" className="bg-theme-accent text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-white hover:text-[#2C1E16] transition-all hidden md:block">
               Reserve a Table
             </Link>
+
+            {/* Hamburger — mobile only */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full border border-[#E8DCC4]/15 text-[#E8DCC4]/80 hover:text-white hover:border-[#E8DCC4]/40 transition-all"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <MenuIcon size={20} />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="lg:hidden overflow-hidden border-t border-white/5 bg-[#1e1410]"
+            >
+              <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col gap-1">
+
+                {/* Nav Links */}
+                {[
+                  { to: '/', label: 'Home' },
+                  { to: '/about', label: 'Our Story' },
+                  { to: '/menu', label: 'Menu' },
+                  { to: '/contact', label: 'Contact' },
+                ].map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`px-4 py-3.5 rounded-xl font-semibold text-[15px] transition-all ${location.pathname === link.to
+                        ? 'bg-[#CDA177]/15 text-[#CDA177]'
+                        : 'text-[#E8DCC4]/70 hover:bg-white/5 hover:text-white'
+                      }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+
+                <div className="h-[1px] bg-white/5 my-3" />
+
+                {/* Cart & Search row */}
+                <div className="flex items-center gap-3 px-2">
+                  <Link
+                    to="/cart"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 text-[#E8DCC4]/70 hover:text-white hover:bg-white/10 transition-all flex-1"
+                  >
+                    <ShoppingBag size={18} />
+                    <span className="font-semibold text-sm">Cart</span>
+                    {cartItems?.length > 0 && (
+                      <span className="ml-auto bg-theme-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                        {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+                      </span>
+                    )}
+                  </Link>
+                  <button
+                    onClick={() => { setIsMobileMenuOpen(false); setIsSearchOpen(true); }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 text-[#E8DCC4]/70 hover:text-white hover:bg-white/10 transition-all flex-1"
+                  >
+                    <Search size={18} />
+                    <span className="font-semibold text-sm">Search</span>
+                  </button>
+                </div>
+
+                <div className="h-[1px] bg-white/5 my-1" />
+
+                {/* Reserve & Login */}
+                <Link
+                  to="/reserve"
+                  className="w-full bg-[#CDA177] text-black py-4 rounded-xl font-bold uppercase tracking-widest text-[12px] text-center hover:bg-[#b88c64] transition-all mt-1"
+                >
+                  Reserve a Table
+                </Link>
+
+                {!userInfo && (
+                  <Link
+                    to="/login"
+                    className="w-full border border-[#E8DCC4]/20 text-[#E8DCC4] py-4 rounded-xl font-bold uppercase tracking-widest text-[12px] text-center hover:bg-white/5 transition-all"
+                  >
+                    Log In
+                  </Link>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Main Content */}
