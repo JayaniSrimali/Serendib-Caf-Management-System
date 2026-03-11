@@ -109,13 +109,13 @@ const Home = () => {
                     >
                         <Link
                             to="/menu"
-                            className="w-full sm:w-auto px-10 py-5 bg-[#CDA177] text-black font-bold tracking-widest uppercase text-[11px] hover:bg-[#b88c64] transition-colors duration-300 shadow-xl"
+                            className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-[#CDA177] text-black font-bold tracking-widest uppercase text-[11px] hover:bg-[#b88c64] transition-colors duration-300 shadow-xl"
                         >
                             Explore Menu
                         </Link>
                         <Link
                             to="/reserve"
-                            className="w-full sm:w-auto px-10 py-5 bg-transparent border border-[#CDA177]/40 text-white font-bold tracking-widest uppercase text-[11px] hover:bg-[#CDA177]/10 transition-colors duration-300 backdrop-blur-sm"
+                            className="w-full sm:w-auto px-10 py-5 rounded-2xl bg-transparent border border-[#CDA177]/40 text-white font-bold tracking-widest uppercase text-[11px] hover:bg-[#CDA177]/10 transition-colors duration-300 backdrop-blur-sm"
                         >
                             Book a Table
                         </Link>
